@@ -1,3 +1,18 @@
+UserProfileSchema = new SimpleSchema({
+    firstName: {
+        type: String,
+        optional: true
+    },
+    lastName: {
+        type: String,
+        optional: true
+    },
+    organization : {
+        type: String,
+        optional: true
+    }
+});
+
 UserSchema = new SimpleSchema({
     username: {
         type: String,
@@ -27,7 +42,7 @@ UserSchema = new SimpleSchema({
         type: Date
     },
     profile: {
-        type: Schema.UserProfile,
+        type: UserProfileSchema,
         optional: true
     },
     // Make sure this services field is in your schema if you're using any of the accounts packages
