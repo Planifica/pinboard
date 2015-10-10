@@ -1,0 +1,13 @@
+.menu-right {
+  min-width: 300px;
+  max-width: 400px;
+  height: calc(100% - 108px);
+  background-color: gray;
+  position:absolute;
+  right:0px;
+  top:108px;
+}
+
+.toolbar-right-icon {
+  padding:2px;
+}

@@ -1,5 +1,28 @@
 C.Board = React.createClass({
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    let boardId = FlowRouter.getParam('boardId')
+    let handle = Meteor.subscribe('boards', boardId)
+    return {
+      boardLoading: !handle.ready(),
+      board: Boards.findOne({ _id: boardId })
+    }
+  },
+  getInitialState: function() {
+    return {
+      sideRightVisible: false,
+      sideRightContentString: '',
+      sideRightContent: '',
+      sideRightClassName: ''
+    }
+  },
+  show: function() {
+    this.setState({ sideRightVisible: true })
+  },
 
+  hide: function() {
+    this.setState({ sideRightVisible: false })
+  },
   getNotes() {
     return [
       { _id: 1, title: 'This is task 1' },
@@ -13,19 +36,72 @@ C.Board = React.createClass({
       { _id: 9, title: 'This is task 9' }
     ]
   },
+  toggleSideMember() {
+    if (this.state.sideRightVisible === true) {
+      this.hide()
+      this.setState({ sideRightContentString: '' })
+      this.setState({ sideRightClassName: '' })
+    } else {
+      this.setState({ sideRightContent: this.renderMembers() })
+      this.setState({ sideRightContentString: 'members' })
+      this.setState({ sideRightClassName: 'menu-right' })
+      this.show()
+    }
 
+  },
+  renderMembers() {
+    return <C.Members />
+  },
   renderNotes() {
     return this.getNotes().map((note) => {
       return <C.NoteThumbnail key={note._id} note={note} />
     })
   },
-
   render() {
+    // LOADING
+    if (this.data.boardLoading) {
+      return false
+    }
+    // MEMBER BUTTON
+    let memberButton = (
+      <C.IconButton icon="ion-ios-people" onClick={this.toggleSideMember} />
+    )
+    // SIDE RIGHT
+    let sideRight
+    let toolbarRightIconButtons
+    if (this.state.sideRightContentString === 'task') {
+      toolbarRightIconButtons = (
+        <div>
+          <C.IconButton icon="ion-ios-trash-outline" toolbarLeftClassName="toolbar-right-icon" onClick={this.renderSearchHeader} />
+          <C.IconButton icon="ion-android-create" toolbarLeftClassName="toolbar-right-icon" onClick={this.renderSearchHeader} />
+          <C.IconButton icon="ion-ios-close-empty" className="toolbar-right-icon" onClick={this.hide} />
+        </div>
+      )
+    } else {
+      toolbarRightIconButtons = (
+        <div>
+          <C.IconButton icon="ion-ios-close-empty" className="toolbar-right-icon" onClick={this.hide} />
+        </div>
+      )
+    }
+
+    if (this.state.sideRightVisible === true) {
+      sideRight = (
+        <C.SideRight className={this.state.sideRightClassName}
+        content={this.state.sideRightContent}
+        toolbarRight={toolbarRightIconButtons}/>
+      )
+    }
+    // BOARD
     return (
-      <div className="container">
-        <h5>{TAPi18n.__('yourNotes')}</h5>
-        <div className="note-list" ref="dragContainer">
-          {this.renderNotes()}
+      <div>
+        <C.Toolbar left={this.data.board.name} right={memberButton}/>
+        {sideRight}
+        <div className="container">
+          <h5>{TAPi18n.__('yourNotes')}</h5>
+          <div className="note-list" ref="dragContainer">
+            {this.renderNotes()}
+          </div>
         </div>
       </div>
     )
@@ -34,7 +110,7 @@ C.Board = React.createClass({
   componentDidMount() {
     let container = React.findDOMNode(this.refs.dragContainer)
 
-    dragula([container], {
+    reactDragula([container], {
       isContainer(el) {
         return false;
       }
