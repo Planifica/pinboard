@@ -8,17 +8,20 @@ C.PublicHeader = React.createClass({
     handleLogout() {
         Meteor.logout();
     },
+    handleLogin() {
+        FlowRouter.go("Login");
+    },
     render() {
         let loginButton;
         let { currentUser } = this.data;
 
         if (currentUser) {
             loginButton = (
-              <a href="#" onClick={this.handleLogout}>Logout</a>
+              <button onClick={this.handleLogout}>Logout</button>
             )
         } else {
             loginButton = (
-              <a href="/login">Login</a>
+              <button onClick={this.handleLogin}>Login</button>
             )
         }
 
