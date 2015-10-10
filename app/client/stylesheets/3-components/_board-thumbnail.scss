@@ -1,0 +1,80 @@
+.board-thumbnail {
+  position: relative;
+
+  padding: 10px;
+  margin: 2.5%;
+  height: 150px;
+  width: calc(95%);
+  /* Larger than mobile */
+  @media (min-width: 400px) {
+    margin: 1%;
+    width: calc(96%/2);
+  }
+  /* Larger than phablet */
+  @media (min-width: 550px) {
+    margin: 1%;
+    width: calc(94%/3);
+  }
+  @media (min-width: 750px) {
+    margin: 1%;
+    width: calc(94%/3);
+  }
+  @media (min-width: 1000px) {
+    margin: 1%;
+    width: calc(92%/4);
+  }
+  @media (min-width: 1200px) {
+    margin: 1%;
+    width: calc(90%/5);
+  }
+
+  border: 1px solid $primary-color-light;
+  background-color: $primary-color-light;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+
+  .title {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 1px solid $primary-color-light;
+    background-color: white;
+
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  &.bord-creation-thumbnail {
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+
+    font-size: 6rem;
+
+    .create-board-form {
+      font-size: 1rem;
+      margin: 0;
+
+      input {
+        margin-bottom: 1rem;
+      }
+      button {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

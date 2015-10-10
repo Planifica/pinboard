@@ -1,0 +1,10 @@
+.board-list-container {
+  h5 {
+    margin: 0;
+    padding: 0 1%
+  }
+  .board-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
