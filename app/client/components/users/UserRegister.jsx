@@ -70,7 +70,7 @@ C.UserRegister = React.createClass({
                       <C.FormInput hasError={!!this.state.errors.email} name="Email" type="text" label="Email" classExtendInput="u-full-width"/>
                       <C.FormInput hasError={!!this.state.errors.fullname} name="Fullname" type="text" label="Fullname" classExtendInput="u-full-width"/>
                       <C.FormInput hasError={!!this.state.errors.password} name="Password" type="password" label="Password" classExtendInput="u-full-width"/>
-                      <input type="submit" className="btn btn-default" className="u-full-width"/>
+                      <button type="submit" className="landing-button" className="u-full-width">{TAPi18n.__('signUp')}</button>
                   </form>
               </div>
           </div>
