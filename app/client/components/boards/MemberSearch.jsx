@@ -26,7 +26,7 @@ C.MemberSearch = React.createClass({
     let members = this.state.members
     let memberList = (
       <ul className='user-items'>
-        {members.map(function(result) {
+        {members.map((result) => {
           return <li id={result.username}>
           <C.UserItem user={result}
           handlePrimaryClick={this.addMember}/>

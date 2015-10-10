@@ -7,11 +7,11 @@ C.Members = React.createClass({
     return {
       userLoading: !handle.ready(),
       board,
-      members: Meteor.users.find().fetch()
+      boardId,
+      members: Meteor.users.find({ _id: { $in: board.members } }).fetch()
     }
   },
   removeMember(user) {
-    console.log("remove");
     let userId = user._id
     Meteor.call('removeMember', userId, this.data.boardId, () => {
     })
@@ -44,13 +44,12 @@ C.Members = React.createClass({
     } else {
       memberSearch = (<C.MemberSearch focusOut={ this.toggleSearchMember }/>)
     }
-    let users = this.data.members
     let members = (
       <div>
-        {users.map(function(result) {
+        {this.data.members.map((result) => {
           return <C.UserItem user={result} actionItem=<C.IconButton
           icon='ion-ios-close-empty'
-          onClick={this.removeMember} /> />
+          onClick={this.removeMember} clickContext={result}/> />
         })}
       </div>
     )
