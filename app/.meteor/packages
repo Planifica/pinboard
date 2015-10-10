@@ -1,0 +1,38 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+react
+kadira:flow-router
+kadira:react-layout
+meteorhacks:flow-layout
+aldeed:collection2
+matb33:collection-hooks
+dburles:collection-helpers
+underscore
+fourseven:scss
+http
+accounts-password
+
+## I have commented out the testing packages because I don't like them
+## to run while I'm developing. The more tests you add the slower your
+## app gets.
+
+# sanjo:jasmine
+# velocity:html-reporter
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
