@@ -46,7 +46,7 @@ C.FormInput = React.createClass({
 
         return (
           <div className={ className }>
-              { label === "none" ? "" : <label htmlFor={ name.toLowerCase() } className="control-label">{ name }</label> }
+              { label === "none" ? "" : <label htmlFor={ name.toLowerCase() } className="control-label label-left">{ name }</label> }
               { inputType }
           </div>
         )

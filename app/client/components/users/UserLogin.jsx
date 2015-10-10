@@ -58,7 +58,7 @@ C.UserLogin = React.createClass({
                         <C.AuthErrors errors={this.state.errors} />
                         <C.FormInput hasError={!!this.state.errors.email} name="Email" type="text" label="Email" classExtendInput="u-full-width" />
                         <C.FormInput hasError={!!this.state.errors.password} name="Password" type="password" label="Password" classExtendInput="u-full-width"/>
-                        <button type="submit" className="landing-button" className="u-full-width">{TAPi18n.__('signIn')}</button>
+                        <button type="submit" className="landing-button u-full-width">{TAPi18n.__('signIn')}</button>
                         <a href="/register">{TAPi18n.__('signUp')}</a>
                     </form>
                 </div>
