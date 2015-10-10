@@ -62,21 +62,18 @@ C.UserRegister = React.createClass({
     },
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="twelve columns">
-                        <h1>Register</h1>
-
-                        <form onSubmit={this.onSubmit}>
-                            <C.AuthErrors errors={this.state.errors} />
-                            <C.FormInput hasError={!!this.state.errors.email} name="Email" type="text" label="Email" />
-                            <C.FormInput hasError={!!this.state.errors.fullname} name="Fullname" type="text" label="Fullname" />
-                            <C.FormInput hasError={!!this.state.errors.password} name="Password" type="password" label="Password" />
-                            <input type="submit" className="btn btn-default"/>
-                        </form>
-                    </div>
-                </div>
-            </div>
+          <div className="user-login">
+              <div className="user-login-container">
+                  <h1>Register</h1>
+                  <form onSubmit={this.onSubmit} className="u-full-width row">
+                      <C.AuthErrors errors={this.state.errors} />
+                      <C.FormInput hasError={!!this.state.errors.email} name="Email" type="text" label="Email" classExtendInput="u-full-width"/>
+                      <C.FormInput hasError={!!this.state.errors.fullname} name="Fullname" type="text" label="Fullname" classExtendInput="u-full-width"/>
+                      <C.FormInput hasError={!!this.state.errors.password} name="Password" type="password" label="Password" classExtendInput="u-full-width"/>
+                      <input type="submit" className="btn btn-default" className="u-full-width"/>
+                  </form>
+              </div>
+          </div>
         )
     }
 });

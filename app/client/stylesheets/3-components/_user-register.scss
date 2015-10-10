@@ -1,0 +1,8 @@
+.user-register {
+  @extend %horizontal-center-in-parent;
+  text-align: center;
+  .user-register-container {
+    min-width: 300px;
+    max-width: 400px;
+  }
+}
