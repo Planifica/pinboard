@@ -13,10 +13,10 @@ C.MemberSearch = React.createClass({
       this.setState({ members: res })
     })
   },
-  addMember() {
-    let memberId = 'test'
+  addMember(user) {
+    let userId = user._id
     let boardId = FlowRouter.getParam('boardId')
-    Meteor.call('addMember', memberId, boardId, () => {
+    Meteor.call('addMember', userId, boardId, () => {
     })
   },
   handleChange(event) {
@@ -24,12 +24,14 @@ C.MemberSearch = React.createClass({
   },
   render() {
     let members = this.state.members
-    let self = this
     let memberList = (
-      <ul>
-      {members.map(function(result) {
-        return <li id={result.username} onClick={self.addMember}>{result.username}</li>
-      })}
+      <ul className='user-items'>
+        {members.map(function(result) {
+          return <li id={result.username}>
+          <C.UserItem user={result}
+          handlePrimaryClick={this.addMember}/>
+          </li>
+        })}
       </ul>
     )
     return (
@@ -38,7 +40,7 @@ C.MemberSearch = React.createClass({
             <input
             value={this.state.memberName}
             onChange={this.handleChange}
-            className="search-member-input"
+            className="member-search"
             type="text"
             placeholder={TAPi18n.__('searchMember')}
             onKeyUp={this.searchMembers}
