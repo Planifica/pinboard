@@ -4,11 +4,13 @@ C.BoardThumbnail = React.createClass({
   },
   render() {
     return (
-      <div className="board-thumbnail">
-        <div className="title">
-          {this.props.board.name}
+      <a href={this.prop.board._id}>
+        <div className="board-thumbnail">
+          <div className="title">
+            {this.props.board.name}
+          </div>
         </div>
-      </div>
+      </a>
     )
   }
 })
