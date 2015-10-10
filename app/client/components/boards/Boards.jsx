@@ -1,24 +1,26 @@
 C.Boards = React.createClass({
+  mixins: [ReactMeteorData],
+  getMeteorData() {
 
-  getBoards() {
-    return [
-      { _id: 1, title: 'This is task 1' },
-      { _id: 2, title: 'This is task 2' },
-      { _id: 3, title: 'This is task 3' }
-    ]
+    Meteor.subscribe('boards')
+
+    return {
+      tasks: Boards.find({}).fetch()
+    }
   },
 
   renderBoards() {
-    return this.getBoards().map((board) => {
-      return <C.Board key={board._id} board={board} />
+    return this.data.tasks.map((board) => {
+      return <C.BoardThumbnail key={board._id} board={board} />
     })
   },
 
   render() {
     return (
-      <div>
-        <h4>{TAPi18n.__('yourBoards')}</h4>
+      <div className="container board-list-container">
+        <h5>{TAPi18n.__('yourBoards')}</h5>
         <div className="board-list">
+            <C.BoardCreationThumbnail/>
             {this.renderBoards()}
         </div>
       </div>
