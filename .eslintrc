@@ -8,11 +8,17 @@
     },
     "globals": {
         "C": true,
-        "React": true,
-        "TAPi18n": true
+        "React": false,
+        "TAPi18n": false,
+        "FlowRouter": false,
+        "ReactMeteorData": false,
+        "Meteor": false,
+        "ReactLayout": false,
+        "$": false,
+        "_": false,
+        "Accounts": false
     },
     "plugins": [
-        "meteor"
     ],
     "rules": {
         // Possible Errors
@@ -104,9 +110,7 @@
         "no-unused-vars": 2,
         "no-use-before-define": 2,
         // Stylistic Issues
-        "indent": [2, 2, {
-          "SwitchCase": 1
-        }],
+        "indent": [2, 2],
         "brace-style": 2,
         "camelcase": 0,
         "comma-spacing": 2,
@@ -159,18 +163,6 @@
         "max-len": [2, 120],
         "max-params": 0,
         "max-statements": 0,
-        "no-plusplus": 0,
-        // meteor
-        "meteor/no-zero-timeout": 0,
-        "meteor/no-session": 2,
-        "meteor/pubsub": 2,
-        "meteor/core": 2,
-        "meteor/consistent-argument-names": [
-            2,
-            {
-                "eventParamName": "evt",
-                "templateInstanceParamName": "tmplInst"
-            }
-        ]
+        "no-plusplus": 0
     }
 }
