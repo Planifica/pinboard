@@ -13,7 +13,9 @@ C.MainHeader = React.createClass({
   },
   renderSearchHeader() {
     ReactLayout.render(C.MainLayout, {
-      header: <C.SearchHeader />
+      header: <C.SearchHeader />,
+      content: <C.Boards />,
+      footer: <C.MainFooter />
     })
   },
   render() {

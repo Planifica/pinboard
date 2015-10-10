@@ -15,11 +15,11 @@
     li {
       border-bottom: 1px solid black;
       margin-bottom: 0px;
-      padding: 2px 0px 2px 0px
-    }
-    li:hover {
-      background-color: #C9C9C9;
-      cursor:pointer;
+      padding: 2px 0px 2px 0px;
+      &:hover {
+        background-color: #C9C9C9;
+        cursor:pointer;
+      }
     }
   }
 }

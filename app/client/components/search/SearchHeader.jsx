@@ -6,11 +6,12 @@ C.SearchHeader = React.createClass({
       tagName: ''
     }
   },
+  /* Fetches tags from the server */
   searchTags(event) {
     let name = $(event.target).val()
-    Meteor.call('searchTags', name, function(err, res) {
+    Meteor.call('searchTags', name, (err, res) => {
       this.setState({ tags: res })
-    }.bind(this))
+    })
   },
   renderMainHeader() {
     ReactLayout.render(C.MainLayout, {
@@ -19,6 +20,7 @@ C.SearchHeader = React.createClass({
       footer: <C.MainFooter />
     })
   },
+  /* Change board content  */
   searchContentWithTagName(event) {
     let name = $(event.target).attr('id')
     this.setState({
