@@ -34,10 +34,6 @@ C.Board = React.createClass({
   componentDidMount() {
     let container = React.findDOMNode(this.refs.dragContainer)
 
-    dragula([container], {
-      isContainer(el) {
-        return false;
-      }
-    })
+    dragula([container])
   }
 })
