@@ -22,7 +22,7 @@ FlowRouter.route("/register", {
 FlowRouter.route("/boards", {
     name: "Boards",
     action(params) {
-        renderMainLayoutWith(<C.Boards />);
+        renderPrivateLayoutWith(<C.Boards />);
     }
 });
 

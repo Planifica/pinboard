@@ -10,7 +10,7 @@ C.Boards = React.createClass({
 
   renderBoards() {
     return this.getBoards().map((board) => {
-      return <C.Board key={board._id} board={board} />
+      return <C.BoardThumbnail key={board._id} board={board} />
     })
   },
 
