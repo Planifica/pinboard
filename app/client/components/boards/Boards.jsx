@@ -3,9 +3,11 @@ C.Boards = React.createClass({
   getMeteorData() {
 
     Meteor.subscribe('boards')
+    Meteor.subscribe('tags', '123')
 
     return {
-      tasks: Boards.find({}).fetch()
+      tasks: Boards.find({}).fetch(),
+      tags: Tags.find().fetch()
     }
   },
 
@@ -19,6 +21,7 @@ C.Boards = React.createClass({
     return (
       <div className="container board-list-container">
         <h5>{TAPi18n.__('yourBoards')}</h5>
+        <C.TagLine tags={this.data.tags}/>
         <div className="board-list">
             <C.BoardCreationThumbnail/>
             {this.renderBoards()}
