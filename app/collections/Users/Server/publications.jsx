@@ -15,3 +15,10 @@ Meteor.methods({
   ).fetch()
   }
 })
+
+if (Meteor.isServer) {
+  Meteor.publish('users', (users) => {
+    check(users, Array)
+    return Meteor.users.find({ _id: { $in: users } })
+  })
+}
