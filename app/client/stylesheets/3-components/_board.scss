@@ -1,5 +1,8 @@
 .note-column {
-  display: inline-block;
   width: $note-size + 10px;
   height: 3 * ($note-size + 10px);
+}
+
+.note-columns {
+  display: flex;
 }
