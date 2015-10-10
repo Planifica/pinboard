@@ -1,22 +1,30 @@
 FlowRouter.route("/", {
-    name: 'Home',
-    subscriptions() {
-
-    },
+    name: 'Landing',
     action(params) {
-        renderMainLayoutWith(<C.Home />);
+        renderPublicLayoutWith(<C.Landing />);
     }
 });
 
 FlowRouter.route("/login", {
     name: "Login",
-    subscriptions(params) {
-
-    },
     action(params) {
         renderMainLayoutWith(<C.UserLogin />);
     }
 });
+
+FlowRouter.route("/register", {
+    name: "Register",
+    action(params) {
+        renderMainLayoutWith(<C.UserRegister />);
+    }
+});
+
+function renderPublicLayoutWith(component) {
+    ReactLayout.render(C.PublicLayout, {
+        header: <C.PublicHeader />,
+        content: component
+    });
+}
 
 function renderMainLayoutWith(component) {
     ReactLayout.render(C.MainLayout, {

@@ -1,0 +1,18 @@
+.landing-button {
+    height: 50px;
+    line-height: 50px;
+
+    font-size: 1.5rem;
+
+    background-color: $primary-color;
+    color: white;
+    border-color: $primary-color-dark;
+    border: 0;
+    border-bottom: 3px solid $primary-color-dark;
+
+    &:hover, &:focus {
+        color: white;
+        background-color: $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+    }
+}

@@ -1,4 +1,4 @@
-C.MainHeader = React.createClass({
+C.PublicHeader = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
@@ -27,7 +27,9 @@ C.MainHeader = React.createClass({
         )
 
         return (
-            <C.Toolbar left={logo} right={loginButton}/>
+            <header className="public">
+                <C.Toolbar left={logo} right={loginButton}/>
+            </header>
         )
     }
 });
