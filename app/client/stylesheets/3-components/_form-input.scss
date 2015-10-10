@@ -1,0 +1,5 @@
+.form-group {
+    &.has-error > input {
+        border-color: $error-color;
+    }
+}

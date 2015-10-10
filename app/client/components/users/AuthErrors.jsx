@@ -5,10 +5,10 @@ C.AuthErrors = React.createClass({
     render() {
         if (this.props.errors) {
             return (
-                <ul className="list-group">
+                <ul className="auth-errors">
                     {
                         _.values(this.props.errors).map((errorMessage) => {
-                            return <li key={errorMessage} className="list-group-item alert alert-danger">{errorMessage}</li>;
+                            return <li key={errorMessage}>{errorMessage}</li>;
                         })
                     }
                 </ul>
