@@ -33,7 +33,7 @@ function renderPublicLayoutWith(component) {
     });
 }
 
-function renderMainLayoutWith(component) {
+function renderPrivateLayoutWith(component) {
     ReactLayout.render(C.MainLayout, {
         header: <C.MainHeader />,
         content: component,
