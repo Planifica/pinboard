@@ -4,9 +4,10 @@ C.IconButton = React.createClass({
     className: React.PropTypes.string
   },
   render () {
-    const { onClick, className } = this.props
+    const { onClick, propClassName } = this.props
+    const className = propClassName || '' + 'button-icon'
     return (
-        <button class="button" onClick={onClick} className={className}>
+        <button onClick={onClick} className={className}>
             <i className={this.props.icon}></i>
         </button>
     )

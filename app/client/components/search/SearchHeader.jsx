@@ -57,7 +57,7 @@ C.SearchHeader = React.createClass({
         </form>
     )
     let close = (
-      <C.IconButton icon="ion-close-round" onClick={this.renderMainHeader} className="close-search-button"/>
+      <C.IconButton icon="ion-ios-close-empty" onClick={this.renderMainHeader} className="close-search-button"/>
     )
 
     return (
