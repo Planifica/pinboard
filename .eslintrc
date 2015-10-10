@@ -13,10 +13,18 @@
         "FlowRouter": false,
         "ReactMeteorData": false,
         "Meteor": false,
+        "Mongo": false,
         "ReactLayout": false,
         "$": false,
         "_": false,
-        "Accounts": false
+        "Accounts": false,
+        "SimpleSchema": false,
+        "Boards": true,
+        "Notes": true,
+        "Groups": true,
+        "Tags": true,
+        "Comments": true,
+        "Schemas": true
     },
     "plugins": [
     ],

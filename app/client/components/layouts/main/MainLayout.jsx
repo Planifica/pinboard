@@ -2,22 +2,22 @@ C.MainLayout = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-        currentUser: Meteor.user()
+      currentUser: Meteor.user()
     }
   },
-    render() {
-      let content = <C.UserLogin />
-      if (this.data.currentUser !== null) {
-        content = this.props.content
-      }
-      return (
-          <div>
-              {this.props.header}
-
-              {content}
-
-              {this.props.footer}
-          </div>
-      )
+  render() {
+    let content = <C.UserLogin />
+    if (this.data.currentUser !== null) {
+      content = this.props.content
     }
+    return (
+        <div>
+            {this.props.header}
+
+            {content}
+
+            {this.props.footer}
+        </div>
+    )
+  }
 })
