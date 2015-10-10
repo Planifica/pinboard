@@ -64,7 +64,7 @@ C.UserRegister = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-6 col-sm-offset-3">
+                    <div className="twelve columns">
                         <h1>Register</h1>
 
                         <form onSubmit={this.onSubmit}>
