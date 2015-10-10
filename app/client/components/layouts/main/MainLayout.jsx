@@ -7,7 +7,7 @@ C.MainLayout = React.createClass({
   },
     render() {
       let content = <C.UserLogin />
-      if (!this.data.currentUser) {
+      if (this.data.currentUser !== null) {
         content = this.props.content
       }
       return (

@@ -6,7 +6,7 @@ C.Redirect = React.createClass({
     }
   },
   render() {
-    if (!this.data.currentUser) {
+    if (this.data.currentUser !== null) {
       FlowRouter.go('Boards')
     }
     return false
