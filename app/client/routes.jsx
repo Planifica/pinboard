@@ -8,14 +8,14 @@ FlowRouter.route("/", {
 FlowRouter.route("/login", {
     name: "Login",
     action(params) {
-        renderMainLayoutWith(<C.UserLogin />);
+        renderPublicLayoutWith(<C.UserLogin />);
     }
 });
 
 FlowRouter.route("/register", {
     name: "Register",
     action(params) {
-        renderMainLayoutWith(<C.UserRegister />);
+        renderPublicLayoutWith(<C.UserRegister />);
     }
 });
 
