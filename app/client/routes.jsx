@@ -19,6 +19,13 @@ FlowRouter.route("/register", {
     }
 });
 
+FlowRouter.route("/boards", {
+    name: "Boards",
+    action(params) {
+        renderMainLayoutWith(<C.Boards />);
+    }
+});
+
 function renderPublicLayoutWith(component) {
     ReactLayout.render(C.PublicLayout, {
         header: <C.PublicHeader />,
