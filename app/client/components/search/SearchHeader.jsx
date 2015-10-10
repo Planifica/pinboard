@@ -1,9 +1,16 @@
 C.SearchHeader = React.createClass({
-  mixins: [ReactMeteorData],
-  getMeteorData() {
+  mixins: [],
+  getInitialState() {
     return {
-      currentUser: Meteor.user()
+      tags: [],
+      tagName: ''
     }
+  },
+  searchTags(event) {
+    let name = $(event.target).val()
+    Meteor.call('searchTags', name, function(err, res) {
+      this.setState({ tags: res })
+    }.bind(this))
   },
   renderMainHeader() {
     ReactLayout.render(C.MainLayout, {
@@ -12,21 +19,43 @@ C.SearchHeader = React.createClass({
       footer: <C.MainFooter />
     })
   },
+  searchContentWithTagName(event) {
+    let name = $(event.target).attr('id')
+    this.setState({
+      tagName: name,
+      tags: []
+    })
+  },
+  handleChange(event) {
+    this.setState({ tagName: event.target.value })
+  },
   render() {
+    let tags = this.state.tags
+    let self = this
+    let tagsList = (
+      <ul>
+      {tags.map(function(result) {
+        return <li id={result.name} onClick={self.searchContentWithTagName}>{result.name}</li>
+      })}
+      </ul>
+    )
 
     let input = (
         <form className="search-form">
-            <input className="u-full-width" type="text" placeholder="Tag1" id="search"/>
-            <ul>
-              <li>tag1</li>
-              <li>tag2</li>
-              <li>tag3</li>
-              <li>tag1</li>
-            </ul>
+            <input id="searchInput"
+            value={this.state.tagName}
+            onChange={this.handleChange}
+            className="u-full-width"
+            type="text"
+            placeholder={TAPi18n.__('search-placeholder')}
+            id="search"
+            onKeyUp={this.searchTags}
+            autoComplete="off"/>
+            {tagsList}
         </form>
     )
     let close = (
-      <C.IconButton icon="ion-close-round" onClick={this.renderMainHeader}/>
+      <C.IconButton icon="ion-close-round" onClick={this.renderMainHeader} className="close-search-button"/>
     )
 
     return (

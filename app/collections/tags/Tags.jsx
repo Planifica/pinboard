@@ -10,3 +10,9 @@ Schemas.Tag = new SimpleSchema({
 })
 
 Tags.attachSchema(Schemas.Tag)
+
+Tags.allow({
+  insert: function() {
+    return true
+  }
+})
