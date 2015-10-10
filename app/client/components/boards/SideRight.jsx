@@ -7,8 +7,8 @@ C.SideRight = React.createClass({
 
   render() {
     return (
-      <div className={this.props.className}>
-      <C.Toolbar left={this.props.toolbarLeft} center={this.props.toolbarCenter} right={this.props.toolbarRight}/>
+      <div className={'sidebar ' + this.props.className}>
+        <C.Toolbar left={this.props.toolbarLeft} center={this.props.toolbarCenter} right={this.props.toolbarRight}/>
         {this.props.content}
       </div>
     )

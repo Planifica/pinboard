@@ -10,7 +10,6 @@ C.Members = React.createClass({
     }
   },
   toggleSearchMember() {
-    console.log("toggle")
     if (this.state.searchMember === false) {
       this.setState({ searchMember: true })
     } else {
@@ -32,6 +31,7 @@ C.Members = React.createClass({
     return (
       <div className="container">
         {memberSearch}
+        <C.UserItem user={Meteor.user()} actionItem=<C.IconButton icon='ion-ios-close-empty'/> />
       </div>
     )
   }

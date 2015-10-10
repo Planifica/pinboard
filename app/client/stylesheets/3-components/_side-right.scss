@@ -1,13 +1,17 @@
 .menu-right {
   min-width: 300px;
   max-width: 400px;
-  height: calc(100% - 108px);
+  height: calc(100% - 54px);
   background-color: gray;
-  position:absolute;
-  right:0px;
-  top:108px;
+  position: absolute;
+  right: 0px;
+  top: 54px;
 }
 
 .toolbar-right-icon {
-  padding:2px;
+  padding: 2px;
+}
+
+.sidebar {
+  z-index: 1;
 }
