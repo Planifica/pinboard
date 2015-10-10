@@ -1,8 +1,5 @@
 FlowRouter.route("/", {
     name: 'Landing',
-    subscriptions() {
-
-    },
     action(params) {
         renderPublicLayoutWith(<C.Landing />);
     }
@@ -10,11 +7,15 @@ FlowRouter.route("/", {
 
 FlowRouter.route("/login", {
     name: "Login",
-    subscriptions(params) {
-
-    },
     action(params) {
         renderMainLayoutWith(<C.UserLogin />);
+    }
+});
+
+FlowRouter.route("/register", {
+    name: "Register",
+    action(params) {
+        renderMainLayoutWith(<C.UserRegister />);
     }
 });
 

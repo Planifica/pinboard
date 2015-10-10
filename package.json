@@ -27,7 +27,6 @@
   },
   "config": {
     "ghooks": {
-      "commit-msg": "node_modules/.bin/validate-commit-msg"
     }
   }
 }
