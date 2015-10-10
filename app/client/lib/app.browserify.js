@@ -1,1 +1,0 @@
-dragula = require('react-dragula')

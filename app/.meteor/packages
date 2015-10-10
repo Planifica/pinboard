@@ -29,6 +29,7 @@ meteorhacks:flow-layout
 aldeed:collection2
 matb33:collection-hooks
 dburles:collection-helpers
+aldeed:simple-schema
 
 underscore
 
@@ -45,9 +46,5 @@ tap:i18n
 
 # sanjo:jasmine
 # velocity:html-reporter
-aldeed:simple-schema
-meteorhacks:npm
 
-
-npm-container
-cosmos:browserify
+mquandalle:bower
