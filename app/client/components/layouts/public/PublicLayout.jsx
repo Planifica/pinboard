@@ -4,7 +4,9 @@ C.PublicLayout = React.createClass({
             <div>
                 {this.props.header}
 
-                {this.props.content}
+                <div className="landing">
+                    {this.props.content}
+                </div>
 
                 {this.props.footer}
             </div>

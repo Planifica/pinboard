@@ -1,4 +1,4 @@
-.landing-button {
+.landing-button, .landing-button:focus {
     height: 50px;
     line-height: 50px;
 
@@ -10,7 +10,7 @@
     border: 0;
     border-bottom: 3px solid $primary-color-dark;
 
-    &:hover, &:focus {
+    &:hover {
         color: white;
         background-color: $primary-color-dark;
         border-bottom: 3px solid $primary-color-dark;

@@ -1,0 +1,9 @@
+.form-group {
+    &.has-error > input {
+        border-color: $error-color;
+    }
+
+    .label-left {
+      text-align: left;
+    }
+}
