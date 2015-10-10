@@ -27,7 +27,7 @@ C.Boards = React.createClass({
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <h5>{TAPi18n.__('yourBoards')}</h5>
         <div className="board-list">
             {this.renderBoards()}
