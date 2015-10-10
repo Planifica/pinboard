@@ -26,9 +26,11 @@ C.MemberSearch = React.createClass({
     let members = this.state.members
     let self = this
     let memberList = (
-      <ul>
+      <ul className='user-items'>
       {members.map(function(result) {
-        return <li id={result.username} onClick={self.addMember}>{result.username}</li>
+        return <li id={result.username} onClick={self.addMember}>
+        <C.UserItem user={result} actionItem=<C.IconButton icon='ion-ios-close-empty'/> />
+        </li>
       })}
       </ul>
     )
@@ -38,7 +40,7 @@ C.MemberSearch = React.createClass({
             <input
             value={this.state.memberName}
             onChange={this.handleChange}
-            className="search-member-input"
+            className="member-search"
             type="text"
             placeholder={TAPi18n.__('searchMember')}
             onKeyUp={this.searchMembers}
