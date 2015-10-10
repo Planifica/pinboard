@@ -13,6 +13,12 @@ C.MemberSearch = React.createClass({
       this.setState({ members: res })
     })
   },
+  addMember() {
+    let memberId = 'test'
+    let boardId = FlowRouter.getParam('boardId')
+    Meteor.call('addMember', memberId, boardId, () => {
+    })
+  },
   handleChange(event) {
     this.setState({ memberName: event.target.value })
   },
@@ -26,7 +32,6 @@ C.MemberSearch = React.createClass({
       })}
       </ul>
     )
-    console.log(this.props)
     return (
       <header className="private">
         <div className="search-form">
