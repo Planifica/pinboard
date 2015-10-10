@@ -1,0 +1,28 @@
+.search-form {
+  margin-bottom: 0px;
+  min-width: 300px;
+  max-width: 400px;
+  input {
+    margin-bottom: 0px;
+  }
+  ul {
+    position:absolute;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    min-width: 300px;
+    max-width: 400px;
+    li {
+      border-bottom: 1px solid black;
+      margin-bottom: 0px;
+      padding: 2px 0px 2px 0px;
+      &:hover {
+        background-color: #C9C9C9;
+        cursor:pointer;
+      }
+    }
+  }
+}
+.close-search-button {
+  margin-bottom: 0px;
+}

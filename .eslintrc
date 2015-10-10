@@ -25,6 +25,7 @@
         "Tags": true,
         "Comments": true,
         "Schemas": true,
+        "check": true,
         "Security": false
     },
     "plugins": [
