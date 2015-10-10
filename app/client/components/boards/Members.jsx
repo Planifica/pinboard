@@ -31,7 +31,10 @@ C.Members = React.createClass({
     return (
       <div className="container">
         {memberSearch}
-        <C.UserItem user={Meteor.user()} actionItem=<C.IconButton icon='ion-ios-close-empty'/> />
+        <C.UserItem
+          user={Meteor.user()}
+          actionItem=<C.IconButton icon='ion-ios-close-empty'/>
+        />
       </div>
     )
   }

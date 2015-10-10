@@ -1,6 +1,7 @@
 C.UserItem = React.createClass({
   PropTypes: {
-    user: React.PropTypes.object
+    user: React.PropTypes.object,
+    handlePrimaryClick: React.PropTypes.func
   },
   renderAvatar () {
     let render = (
@@ -8,9 +9,14 @@ C.UserItem = React.createClass({
     )
     return render
   },
+  handlePrimaryClick() {
+    if (this.props.handlePrimaryClick) {
+      this.props.handlePrimaryClick(this.props.user)
+    }
+  },
   render () {
     return (
-      <div className="user-item">
+      <div className="user-item" onClick={this.handlePrimaryClick}>
         <div className="avatar">
           {this.renderAvatar()}
         </div>
