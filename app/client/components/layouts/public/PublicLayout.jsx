@@ -1,15 +1,15 @@
 C.PublicLayout = React.createClass({
     render() {
-        return (
-            <div>
-                {this.props.header}
+      return (
+          <div>
+              {this.props.header}
 
-                <div className="landing">
-                    {this.props.content}
-                </div>
+              <div className="landing">
+                  {this.props.content}
+              </div>
 
-                {this.props.footer}
-            </div>
-        )
+              {this.props.footer}
+          </div>
+      )
     }
-});
+})

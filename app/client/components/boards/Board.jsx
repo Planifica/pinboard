@@ -1,7 +1,7 @@
 C.Board = React.createClass({
     render () {
-        return (
-            <div>test</div>
-        )
+      return (
+          <div>test</div>
+      )
     }
 })
