@@ -1,10 +1,10 @@
 FlowRouter.route("/", {
-    name: 'Home',
+    name: 'Landing',
     subscriptions() {
 
     },
     action(params) {
-        renderMainLayoutWith(<C.Home />);
+        renderMainLayoutWith(<C.Landing />);
     }
 });
 
