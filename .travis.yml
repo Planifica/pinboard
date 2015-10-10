@@ -9,3 +9,5 @@ env:
   - LAIKA_OPTIONS="-t 5000"
 deploy:
   provider: azure_web_apps
+  on:
+    all_branches: true
