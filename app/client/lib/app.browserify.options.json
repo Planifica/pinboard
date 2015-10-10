@@ -1,0 +1,15 @@
+{
+  "transforms": {
+    "react-dragula": {
+      "external": {
+        "dragula": "dragula"
+      }
+    },
+    "externalify": {
+      "global": true,
+      "external": {
+        "react": "React.require"
+      }
+    }
+  }
+}

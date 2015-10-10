@@ -47,3 +47,8 @@ tap:i18n
 # sanjo:jasmine
 # velocity:html-reporter
 aldeed:simple-schema
+meteorhacks:npm
+
+
+npm-container
+cosmos:browserify
