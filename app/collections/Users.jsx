@@ -1,4 +1,4 @@
-let UserProfileSchema = new SimpleSchema({
+Schemas.UserProfile = new SimpleSchema({
   firstName: {
     type: String,
     optional: true
@@ -9,7 +9,7 @@ let UserProfileSchema = new SimpleSchema({
   }
 })
 
-let UserSchema = new SimpleSchema({
+Schemas.User = new SimpleSchema({
   username: {
     type: String,
     optional: true
@@ -32,7 +32,7 @@ let UserSchema = new SimpleSchema({
     type: Date
   },
   profile: {
-    type: UserProfileSchema,
+    type: Schemas.UserProfile,
     optional: true
   },
   services: {
@@ -47,4 +47,4 @@ let UserSchema = new SimpleSchema({
   }
 })
 
-Meteor.users.attachSchema(UserSchema)
+Meteor.users.attachSchema(Schemas.User)

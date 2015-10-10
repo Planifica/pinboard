@@ -1,12 +1,18 @@
 Groups = new Mongo.Collection('groups')
 
-let GroupSchema = new SimpleSchema({
+Schemas.Group = new SimpleSchema({
+  name: {
+    type: String
+  },
   boardId: {
     type: String
   },
   ownerId: {
     type: String
+  },
+  position: {
+    type: Schemas.Position
   }
 })
 
-Groups.attachSchema(GroupSchema)
+Groups.attachSchema(Schemas.Group)

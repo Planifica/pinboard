@@ -1,6 +1,12 @@
 Notes = new Mongo.Collection('notes')
 
-let NoteSchema = new SimpleSchema({
+Schemas.Note = new SimpleSchema({
+  name: {
+    type: String
+  },
+  text: {
+    type: String
+  },
   boardId: {
     type: String
   },
@@ -11,10 +17,19 @@ let NoteSchema = new SimpleSchema({
   ownerId: {
     type: String
   },
+  position: {
+    type: Schemas.Position
+  },
   tagIds: {
     type: [String],
     optional: true
+  },
+  createdAt: {
+    type: Date
+  },
+  modifiedAt: {
+    type: Date
   }
 })
 
-Notes.attachSchema(NoteSchema)
+Notes.attachSchema(Schemas.Note)

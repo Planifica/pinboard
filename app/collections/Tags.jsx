@@ -1,4 +1,6 @@
-TagSchema = new SimpleSchema({
+Tags = new Mongo.Collection('tags')
+
+Schemas.Tag = new SimpleSchema({
   name: {
     type: String
   },
@@ -6,3 +8,5 @@ TagSchema = new SimpleSchema({
     type: String
   }
 })
+
+Tags.attachSchema(Schemas.Tag)

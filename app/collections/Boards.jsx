@@ -1,6 +1,6 @@
 Boards = new Mongo.Collection('boards')
 
-let BoardSchema = new SimpleSchema({
+Schemas.Board = new SimpleSchema({
   name: {
     type: String
   },
@@ -9,4 +9,4 @@ let BoardSchema = new SimpleSchema({
   }
 })
 
-Boards.attachSchema(BoardSchema)
+Boards.attachSchema(Schemas.Board)

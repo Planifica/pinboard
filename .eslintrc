@@ -23,7 +23,8 @@
         "Notes": true,
         "Groups": true,
         "Tags": true,
-        "Comments": true
+        "Comments": true,
+        "Schemas": true
     },
     "plugins": [
     ],

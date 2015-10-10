@@ -1,9 +1,21 @@
 Comments = new Mongo.Collection('comments')
 
-let CommentSchema = new SimpleSchema({
+Schemas.Comment = new SimpleSchema({
+  text: {
+    type: String
+  },
   ownerId: {
     type: String
+  },
+  noteId: {
+    type: String
+  },
+  createdAt: {
+    type: Date
+  },
+  modifiedAt: {
+    type: Date
   }
 })
 
-Comments.attachSchema(CommentSchema)
+Comments.attachSchema(Schemas.Comment)
