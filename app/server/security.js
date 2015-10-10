@@ -6,3 +6,10 @@ Boards.permit(['insert', 'update', 'remove'])
   .ifIsOwnedByCurrentUser()
   .ifCurrentUserIsMember()
   .apply()
+
+Notes.permit(['insert', 'update', 'remove']).apply()
+
+// permit users to modify boards that they own
+Notes.permit(['insert', 'update', 'remove'])
+  .ifIsOwnedByCurrentUser()
+  .apply()

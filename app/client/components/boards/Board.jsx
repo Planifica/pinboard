@@ -2,10 +2,12 @@ C.Board = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     let boardId = FlowRouter.getParam('boardId')
-    let handle = Meteor.subscribe('boards', boardId)
+    let boardsHandle = Meteor.subscribe('boards', boardId)
+    let notesHandle = Meteor.subscribe('notes', boardId)
     return {
-      boardLoading: !handle.ready(),
-      board: Boards.findOne({ _id: boardId })
+      boardLoading: !(boardsHandle.ready() && notesHandle.ready()),
+      board: Boards.findOne({ _id: boardId }),
+      notes: Notes.find().fetch()
     }
   },
   getInitialState: function() {
@@ -22,19 +24,6 @@ C.Board = React.createClass({
 
   hide: function() {
     this.setState({ sideRightVisible: false })
-  },
-  getNotes() {
-    return [
-      { _id: 1, title: 'This is task 1' },
-      { _id: 2, title: 'This is task 2' },
-      { _id: 3, title: 'This is task 3' },
-      { _id: 4, title: 'This is task 4' },
-      { _id: 5, title: 'This is task 5' },
-      { _id: 6, title: 'This is task 6' },
-      { _id: 7, title: 'This is task 7' },
-      { _id: 8, title: 'This is task 8' },
-      { _id: 9, title: 'This is task 9' }
-    ]
   },
   toggleSideMember() {
     if (this.state.sideRightVisible === true) {
