@@ -1,9 +1,13 @@
 C.IconButton = React.createClass({
-    render () {
-      return (
-          <button class="button">
-              <i className={this.props.icon}></i>
-          </button>
-      )
-    }
+  propTypes: {
+    onClick: React.PropTypes.func
+  },
+  render () {
+    const { onClick } = this.props
+    return (
+        <button class="button" onClick={onClick}>
+            <i className={this.props.icon}></i>
+        </button>
+    )
+  }
 })
