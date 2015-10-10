@@ -3,3 +3,4 @@ node_modules/*
 environments/production/
 mup.json
 settings.json
+certs/
