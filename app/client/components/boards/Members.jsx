@@ -10,7 +10,6 @@ C.Members = React.createClass({
     }
   },
   toggleSearchMember() {
-    console.log("toggle")
     if (this.state.searchMember === false) {
       this.setState({ searchMember: true })
     } else {
