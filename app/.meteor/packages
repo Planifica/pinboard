@@ -33,6 +33,7 @@ dburles:collection-helpers
 underscore
 
 fourseven:scss
+pagebakers:ionicons
 
 # i18n
 tap:i18n

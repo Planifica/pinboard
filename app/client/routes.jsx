@@ -4,7 +4,7 @@ FlowRouter.route("/", {
 
     },
     action(params) {
-        renderMainLayoutWith(<C.Landing />);
+        renderPublicLayoutWith(<C.Landing />);
     }
 });
 
@@ -17,6 +17,13 @@ FlowRouter.route("/login", {
         renderMainLayoutWith(<C.UserLogin />);
     }
 });
+
+function renderPublicLayoutWith(component) {
+    ReactLayout.render(C.PublicLayout, {
+        header: <C.PublicHeader />,
+        content: component
+    });
+}
 
 function renderMainLayoutWith(component) {
     ReactLayout.render(C.MainLayout, {

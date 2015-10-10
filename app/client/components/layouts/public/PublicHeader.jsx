@@ -1,4 +1,4 @@
-C.MainHeader = React.createClass({
+C.PublicHeader = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
