@@ -13,3 +13,8 @@ Schemas.Board = new SimpleSchema({
 })
 
 Boards.attachSchema(Schemas.Board)
+
+Boards.before.insert(function(userId, board) {
+  board.ownerId = userId
+  board.members = [userId]
+})

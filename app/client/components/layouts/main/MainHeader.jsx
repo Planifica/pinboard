@@ -11,6 +11,13 @@ C.MainHeader = React.createClass({
   handleLogin() {
     FlowRouter.go('Login')
   },
+  renderSearchHeader() {
+    ReactLayout.render(C.MainLayout, {
+      header: <C.SearchHeader />,
+      content: <C.Boards />,
+      footer: <C.MainFooter />
+    })
+  },
   render() {
     let { currentUser } = this.data
     let loginButton
@@ -32,7 +39,7 @@ C.MainHeader = React.createClass({
     )
     let actions = (
       <div>
-        <C.IconButton icon="ion-ios-search"/>
+        <C.IconButton icon="ion-ios-search" onClick={this.renderSearchHeader}/>
         {loginButton}
       </div>
     )

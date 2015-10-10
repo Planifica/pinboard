@@ -4,13 +4,13 @@
     justify-content: space-between;
     width: 100%;
     padding: 8px;
-    .left {
-
+    > * > * {
+      display: flex;
+      align-items: center;
     }
-    .center {
-
-    }
-    .right {
-
+    // buttons in the toolbar should have no margin top/bottom
+    button {
+      margin-top: 0;
+      margin-bottom: 0;
     }
 }
