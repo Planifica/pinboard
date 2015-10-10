@@ -28,6 +28,7 @@ C.PublicHeader = React.createClass({
 
         return (
             <header className="public">
+                <C.Redirect />
                 <C.Toolbar left={logo} right={loginButton}/>
             </header>
         )
