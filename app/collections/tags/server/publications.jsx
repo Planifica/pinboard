@@ -4,6 +4,7 @@ Meteor.publish('tags', function(name) {
 
 Meteor.methods({
   searchTags: function(name) {
+    check(name, String)
     if (name.length === 0) {
       return []
     }

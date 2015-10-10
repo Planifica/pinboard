@@ -24,7 +24,8 @@
         "Groups": true,
         "Tags": true,
         "Comments": true,
-        "Schemas": true
+        "Schemas": true,
+        "check": true
     },
     "plugins": [
     ],
