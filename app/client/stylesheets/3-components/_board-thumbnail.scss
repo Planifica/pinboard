@@ -2,12 +2,41 @@
   position: relative;
 
   padding: 10px;
-  margin: 10px;
+  margin: 2.5%;
   height: 100px;
-  width: 200px;
+  width: calc(95%);
+  /* Larger than mobile */
+  @media (min-width: 400px) {
+    margin: 1%;
+    width: calc(96%/2);
+  }
+  /* Larger than phablet */
+  @media (min-width: 550px) {
+    margin: 1%;
+    width: calc(94%/3);
+  }
+  @media (min-width: 750px) {
+    margin: 1%;
+    width: calc(94%/3);
+  }
+  @media (min-width: 1000px) {
+    margin: 1%;
+    width: calc(92%/4);
+  }
+  @media (min-width: 1200px) {
+    margin: 1%;
+    width: calc(90%/5);
+  }
 
-  border: 1px solid $border-color;
+  border: 1px solid $primary-color-light;
+  background-color: $primary-color-light;
   border-radius: 4px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+  }
 
   .title {
     position: absolute;
@@ -20,7 +49,7 @@
     align-items: center;
     justify-content: center;
 
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $primary-color-light;
     background-color: white;
 
     border-bottom-right-radius: 4px;
