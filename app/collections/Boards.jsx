@@ -6,6 +6,9 @@ Schemas.Board = new SimpleSchema({
   },
   ownerId: {
     type: String
+  },
+  members: {
+    type: [String]
   }
 })
 
