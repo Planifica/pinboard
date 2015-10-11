@@ -1,23 +1,26 @@
 .note-placeholder {
+  position: absolute;
+
   margin: 5px 5px 10px 5px;
   height: $note-size;
   width: $note-size;
-  /* Larger than mobile */
+  display: inline-flex;
 
+  /* Larger than mobile */
 
   border-radius: 4px;
 
   cursor: pointer;
 
-  display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgba(0,0,0,0);
 
   font-size: 4rem;
 
   &:hover {
     background-color: whitesmoke;
+    color: white;
     border: 1px solid $border-color;
     color: $border-color;
   }

@@ -49,6 +49,16 @@ C.Board = React.createClass({
 
     return notes
   },
+  getAllNotes() {
+    let notes = [],
+      numberOfColumns = this.data && this.data.mostOuterNote && this.data.mostOuterNote.position.x || -1
+
+    for (let i = 0; i <= numberOfColumns + 1; i++) {
+      notes = notes.concat(this.getNotes(i))
+    }
+
+    return notes
+  },
   showMemberView() {
     this.renderSideBar(<C.MembersView hideSideBar={this.hideSideBar}/>)
   },
@@ -66,6 +76,15 @@ C.Board = React.createClass({
   showDetailView (note) {
     this.renderSideBar(<C.NoteDetailView key={ note._id } note={note} hideSideBar={this.hideSideBar}/>)
   },
+  renderNotesForColumn(column) {
+    return this.getNotes(column).map((note) => {
+      if (note.virtual) {
+        return <C.NotePlaceholder note={note} addNote={this.addNote} />
+      }
+
+      return <C.NoteThumbnail key={note._id} note={note} notes={this.getAllNotes()} showDetailView={this.showDetailView} />
+    })
+  },
   renderColumns(numberOfColumns) {
     let columns = []
 
@@ -75,12 +94,7 @@ C.Board = React.createClass({
 
     return columns.map((column) => {
 
-      return <C.BoardColumn
-        column={column}
-        notes={this.getNotes(column)}
-        drake={this.state.drake}
-        addNote={this.addNote}
-        showDetailView={this.showDetailView}/>
+      return this.renderNotesForColumn(column)
     })
   },
   render() {
@@ -97,7 +111,8 @@ C.Board = React.createClass({
       return <div>Loading ...</div>
     }
 
-    let numberOfColumns = this.data && this.data.mostOuterNote && this.data.mostOuterNote.position.x || -1
+    let numberOfColumns = this.data && this.data.mostOuterNote && this.data.mostOuterNote.position ?
+                    this.data.mostOuterNote.position.x : -1
     let boardName = (
       <h5>{this.data.board.name}</h5>
     )
@@ -108,7 +123,7 @@ C.Board = React.createClass({
           right={memberButton}/>
         {this.state.sideBar ? this.state.sideBar : ''}
         <div className="container">
-          <div className="note-columns">
+          <div className="note-container">
             {this.renderColumns(numberOfColumns)}
           </div>
         </div>
@@ -118,11 +133,6 @@ C.Board = React.createClass({
 
   componentDidMount() {
     this.setState({
-      drake: reactDragula({
-        invalid(el) {
-          return el.className === 'note-placeholder'
-        }
-      })
     })
   }
 })

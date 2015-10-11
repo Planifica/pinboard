@@ -1,36 +1,31 @@
 .note-thumbnail {
-  position: relative;
+  position: absolute;
 
   margin: 5px 5px 10px 5px;
   height: $note-size;
   width: $note-size;
-  /* Larger than mobile */
+  display: inline-flex;
 
-  border: 1px solid $primary-color-light;
-  background-color: $primary-color-light;
-  border-radius: 4px;
+  /* Larger than mobile */
+  background: white;
+  border-radius: 15px;
 
   cursor: pointer;
 
-  &:hover {
-    background-color: $primary-color;
+  padding: 10px;
+  flex-direction: column;
+
+  > p {
+    margin-bottom: 5px;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+  .title {
+    font-size: 1.7rem;
   }
 
-  .title {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-top: 1px solid $primary-color-light;
-    background-color: white;
-
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+  .text {
+    font-size: 1.3rem;
+    color: $text-secondary;
   }
 }

@@ -49,5 +49,6 @@ tap:i18n
 # velocity:html-reporter
 
 mquandalle:bower
+ryanswapp:interactjs
 chuangbo:marked
 jparker:gravatar
