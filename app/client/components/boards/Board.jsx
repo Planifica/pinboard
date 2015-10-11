@@ -26,6 +26,7 @@ C.Board = React.createClass({
   },
   hide: function() {
     this.setState({ sideRightVisible: false })
+  },
 
   noteWithPosition(notes, x, y) {
     return notes.filter((note) => {
