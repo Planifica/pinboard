@@ -5,8 +5,7 @@ C.ShowComment = React.createClass({
 
     return {
       commentsHandle: !commentsHandle.ready(),
-      comments: Comments.find({ noteId: this.props.noteId }).fetch(),
-      user: Meteor.user()
+      comments: Comments.find({ noteId: this.props.noteId }).fetch()
     }
   },
   renderComments () {
@@ -14,7 +13,8 @@ C.ShowComment = React.createClass({
       return 'No comments yet'
     }
     return this.data.comments.map((comment) => {
-      return <C.UserItemWithComment user={this.data.user} comment={comment.text}/>
+      let user = Meteor.users.findOne({ _id: comment.ownerId })
+      return <C.UserItemWithComment user={user} comment={comment.text}/>
     })
   },
   render() {
