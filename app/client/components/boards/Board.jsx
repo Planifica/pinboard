@@ -2,10 +2,8 @@ C.Board = React.createClass({
   mixins: [ReactMeteorData],
   getInitialState: function() {
     return {
-      sideRightVisible: false,
-      sideRightContentString: '',
-      sideRightContent: '',
-      sideRightClassName: ''
+      sideBarVisible: false,
+      sideBar: null
     }
   },
   getMeteorData() {
@@ -20,12 +18,6 @@ C.Board = React.createClass({
       board: Boards.findOne({ _id: boardId }),
       mostOuterNote: Notes.find({}, { sort: { 'position.x': -1 }, limit: 1 }).fetch()[0]
     }
-  },
-  show: function() {
-    this.setState({ sideRightVisible: true })
-  },
-  hide: function() {
-    this.setState({ sideRightVisible: false })
   },
 
   noteWithPosition(notes, x, y) {
@@ -57,21 +49,19 @@ C.Board = React.createClass({
 
     return notes
   },
-  toggleSideMember() {
-    if (this.state.sideRightVisible === true) {
-      this.hide()
-      this.setState({ sideRightContentString: '' })
-      this.setState({ sideRightClassName: '' })
-    } else {
-      this.setState({ sideRightContent: this.renderMembers() })
-      this.setState({ sideRightContentString: 'members' })
-      this.setState({ sideRightClassName: 'menu-right' })
-      this.show()
-    }
-
+  showMemberView() {
+    this.renderSideBar(<C.MembersView hideSideBar={this.hideSideBar}/>)
   },
-  renderMembers() {
-    return <C.Members />
+  renderSideBar(component) {
+    this.setState({
+      sideBar: component
+    })
+  },
+  hideSideBar() {
+    this.renderSideBar(null)
+  },
+  addNote (position) {
+    this.renderSideBar(<C.NoteDetailView note={position}/>)
   },
   renderColumns(numberOfColumns) {
     let columns = []
@@ -82,7 +72,11 @@ C.Board = React.createClass({
 
     return columns.map((column) => {
 
-      return <C.BoardColumn column={column} notes={this.getNotes(column)} drake={this.state.drake} />
+      return <C.BoardColumn
+        column={column}
+        notes={this.getNotes(column)}
+        drake={this.state.drake}
+        addNote={this.addNote}/>
     })
   },
   render() {
@@ -92,34 +86,8 @@ C.Board = React.createClass({
     }
     // MEMBER BUTTON
     let memberButton = (
-      <C.IconButton icon="ion-ios-people" onClick={this.toggleSideMember} />
+      <C.IconButton icon="ion-ios-people" onClick={this.showMemberView} />
     )
-    // SIDE RIGHT
-    let sideRight
-    let toolbarRightIconButtons
-    if (this.state.sideRightContentString === 'task') {
-      toolbarRightIconButtons = (
-        <div>
-          <C.IconButton icon="ion-ios-trash-outline" toolbarLeftClassName="toolbar-right-icon" onClick={this.renderSearchHeader} />
-          <C.IconButton icon="ion-android-create" toolbarLeftClassName="toolbar-right-icon" onClick={this.renderSearchHeader} />
-          <C.IconButton icon="ion-ios-close-empty" className="toolbar-right-icon" onClick={this.hide} />
-        </div>
-      )
-    } else {
-      toolbarRightIconButtons = (
-        <div>
-          <C.IconButton icon="ion-ios-close-empty" className="toolbar-right-icon" onClick={this.hide} />
-        </div>
-      )
-    }
-
-    if (this.state.sideRightVisible === true) {
-      sideRight = (
-        <C.SideRight className={this.state.sideRightClassName}
-        content={this.state.sideRightContent}
-        toolbarRight={toolbarRightIconButtons}/>
-      )
-    }
     // BOARD
     if (this.data.notesLoading) {
       return <div>Loading ...</div>
@@ -130,7 +98,7 @@ C.Board = React.createClass({
     return (
       <div>
         <C.Toolbar left={this.data.board.name} right={memberButton}/>
-        {sideRight}
+        {this.state.sideBar ? this.state.sideBar : ''}
         <div className="container">
           <h5>{TAPi18n.__('yourNotes')}</h5>
           <div className="note-columns">

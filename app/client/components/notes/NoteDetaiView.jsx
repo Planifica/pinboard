@@ -24,7 +24,7 @@ C.NoteDetailView = React.createClass({
     )
     return (
         <C.SideRight
-          className='note-detail-view'
+          className='menu-right note-detail-view'
           content={noteContent}
           toolbarRight={toolbarButtons}/>
     )

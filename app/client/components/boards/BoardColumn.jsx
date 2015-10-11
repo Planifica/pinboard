@@ -2,7 +2,7 @@ C.BoardColumn = React.createClass({
   renderNotes() {
     return this.props.notes.map((note) => {
       if (note.virtual) {
-        return <C.NotePlaceholder note={note} />
+        return <C.NotePlaceholder note={note} addNote={this.props.addNote} />
       }
 
       return <C.NoteThumbnail key={note._id} note={note} />
