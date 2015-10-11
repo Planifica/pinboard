@@ -14,9 +14,9 @@ C.Board = React.createClass({
     return {
       boardLoading: !boardsHandle.ready(),
       notesLoading: !notesHandle.ready(),
-      notes: Notes.find({}, { sort: { 'position.y': 1 } }).fetch(),
+      notes: Notes.find({ boardId: boardId }, { sort: { 'position.y': 1 } }).fetch(),
       board: Boards.findOne({ _id: boardId }),
-      mostOuterNote: Notes.find({}, { sort: { 'position.x': -1 }, limit: 1 }).fetch()[0]
+      mostOuterNote: Notes.find({ boardId: boardId }, { sort: { 'position.x': -1 }, limit: 1 }).fetch()[0]
     }
   },
 
