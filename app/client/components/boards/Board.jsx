@@ -79,7 +79,7 @@ C.Board = React.createClass({
   renderNotesForColumn(column) {
     return this.getNotes(column).map((note) => {
       if (note.virtual) {
-        return <C.NotePlaceholder note={note} addNote={this.addNote} />
+        return <C.NotePlaceholder note={note} addNote={this.addNote} notes={this.data.notes}/>
       }
 
       return <C.NoteThumbnail key={note._id} note={note} notes={this.getAllNotes()} showDetailView={this.showDetailView} />

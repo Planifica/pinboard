@@ -12,13 +12,15 @@ C.NoteThumbnail = React.createClass({
     this.props.showDetailView(this.props.note)
   },
   renderText () {
-    const markdown = { __html: marked(this.props.note.text, { sanitize: true }) }
-    return (<div className="markdown">
-      <p
-      dangerouslySetInnerHTML={markdown}
-      />
-      </div>
-    )
+    if(this.props.note.text){
+      const markdown = { __html: marked(this.props.note.text, { sanitize: true }) }
+      return (<div className="markdown">
+        <p
+        dangerouslySetInnerHTML={markdown}
+        />
+        </div>
+      )
+    }
   },
   render() {
     let style = {
