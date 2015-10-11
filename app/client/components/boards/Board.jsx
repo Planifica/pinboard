@@ -61,10 +61,10 @@ C.Board = React.createClass({
     this.renderSideBar(null)
   },
   addNote (position) {
-    this.renderSideBar(<C.NoteDetailView note={ { position } } hideSideBar={this.hideSideBar}/>)
+    this.renderSideBar(<C.NoteDetailView key={position} note={ { position } } hideSideBar={this.hideSideBar}/>)
   },
   showDetailView (note) {
-    this.renderSideBar(<C.NoteDetailView note={note} hideSideBar={this.hideSideBar}/>)
+    this.renderSideBar(<C.NoteDetailView key={ note._id } note={note} hideSideBar={this.hideSideBar}/>)
   },
   renderColumns(numberOfColumns) {
     let columns = []
