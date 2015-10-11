@@ -125,7 +125,7 @@ C.Board = React.createClass({
       return <div>Loading ...</div>
     }
 
-    let numberOfColumns = this.data.mostOuterNote.position.x
+    let numberOfColumns = this.data && this.data.mostOuterNote && this.data.mostOuterNote.position.x || -1
 
     return (
       <div>
