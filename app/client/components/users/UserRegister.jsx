@@ -54,7 +54,7 @@ C.UserRegister = React.createClass({
               errors: { none: err.reason }
           })
         } else {
-          FlowRouter.go('Home')
+          FlowRouter.go('Boards')
         }
       })
     },

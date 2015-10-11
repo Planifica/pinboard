@@ -6,10 +6,14 @@ C.UserItemWithComment = React.createClass({
     email: React.PropTypes.string
   },
   renderAvatar () {
-    let url = Gravatar.imageUrl(this.props.email, {
-      size: 34,
-      default: 'mm'
-    })
+    let url = ''
+    if (this.props.email) {
+      url = Gravatar.imageUrl(this.props.email, {
+        size: 34,
+        default: 'mm'
+      })
+    }
+
     let render = (
       <div className="circle"><img className="circle" src={url}/></div>
     )
