@@ -12,8 +12,7 @@ C.ShowComment = React.createClass({
       return 'No comments yet'
     }
     return this.data.comments.map((comment) => {
-      let user = Meteor.users.findOne({ _id: comment.ownerId })
-      return <C.UserItemWithComment user={user} email={user.emails[0].address} comment={comment.text}/>
+      return <C.UserItemWithComment user={comment.ownerId} comment={comment.text}/>
     })
   },
   render() {
