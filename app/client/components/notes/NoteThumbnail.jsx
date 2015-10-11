@@ -49,16 +49,6 @@ C.NoteThumbnail = React.createClass({
       updatedX = x / 170
       updatedY = y / 170
 
-      let replacedNote = that.getNoteAtPosition(updatedX, updatedY)
-
-      if (replacedNote && !replacedNote.virtual) {
-        if (replacedNote._id !== that.props.note._id) {
-          //that.storeNotePosition(replacedNote, replacedNote.position.x, replacedNote.position.y + 1)
-          //that.storeNotePosition(that.props.note, updatedX, updatedY)
-
-        }
-      }
-
       target.style.zIndex = 20000
       // translate the element
       target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
