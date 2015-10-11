@@ -14,9 +14,9 @@ C.Board = React.createClass({
     return {
       boardLoading: !boardsHandle.ready(),
       notesLoading: !notesHandle.ready(),
-      notes: Notes.find({}, { sort: { 'position.y': 1 } }).fetch(),
+      notes: Notes.find({ boardId: boardId }, { sort: { 'position.y': 1 } }).fetch(),
       board: Boards.findOne({ _id: boardId }),
-      mostOuterNote: Notes.find({}, { sort: { 'position.x': -1 }, limit: 1 }).fetch()[0]
+      mostOuterNote: Notes.find({ boardId: boardId }, { sort: { 'position.x': -1 }, limit: 1 }).fetch()[0]
     }
   },
 
@@ -61,7 +61,10 @@ C.Board = React.createClass({
     this.renderSideBar(null)
   },
   addNote (position) {
-    this.renderSideBar(<C.NoteDetailView note={position}/>)
+    this.renderSideBar(<C.NoteDetailView key={position} note={ { position } } hideSideBar={this.hideSideBar}/>)
+  },
+  showDetailView (note) {
+    this.renderSideBar(<C.NoteDetailView key={ note._id } note={note} hideSideBar={this.hideSideBar}/>)
   },
   renderColumns(numberOfColumns) {
     let columns = []
@@ -76,7 +79,8 @@ C.Board = React.createClass({
         column={column}
         notes={this.getNotes(column)}
         drake={this.state.drake}
-        addNote={this.addNote}/>
+        addNote={this.addNote}
+        showDetailView={this.showDetailView}/>
     })
   },
   render() {

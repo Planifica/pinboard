@@ -2,10 +2,12 @@ Notes = new Mongo.Collection('notes')
 
 Schemas.Note = new SimpleSchema({
   name: {
-    type: String
+    type: String,
+    optional: true
   },
   text: {
-    type: String
+    type: String,
+    optional: true
   },
   boardId: {
     type: String

@@ -1,36 +1,124 @@
 C.Note = React.createClass({
   PropTypes: {
-    note: React.PropTypes.object
+    note: React.PropTypes.object,
+    markdown: React.PropTypes.bool
   },
   mixins: [ReactMeteorData],
   getMeteorData () {
+    this.note = Notes.findOne({
+      _id: this.props.note._id
+    })
+    Meteor.subscribe('tags', FlowRouter.getParam('boardId'))
     return {
-      tags: Tags.find().fetch(),
-      // note: Notes.findOne({
-      //   _id: this.props.note._id
-      // })
-      note: this.props.note
+      tags: Tags.find({
+        _id: {
+          $in: this.note ? (this.note.tagIds || []) : []
+        }
+      }).fetch()
+    }
+  },
+  getInitialState() {
+    return {
+      name: this.props.note.name || '',
+      text: this.props.note.text || '',
+      tagIds: this.props.note.tagIds || []
     }
   },
   onKeyUp(evt) {
     let node = $(evt.target)
     let value = node.val()
+    let boardId = FlowRouter.getParam('boardId')
+    if (!this.note) {
+      if (node.is('input')) {
+        this.props.note._id = Notes.insert({
+          [node.attr('name')]: value,
+          boardId: boardId,
+          ownerId: Meteor.userId(),
+          position: {
+            x: this.props.note.position.x,
+            y: this.props.note.position.y
+          }
+        })
+        this.setState(Notes.findOne({
+          _id: this.props.note._id
+        }))
+      }
+      return
+    }
     Notes.update({
-      _id: this.data.note._id
+      _id: this.props.note._id
     }, {
       $set: {
         [node.attr('name')]: value
       }
     })
   },
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  },
+  newTagWithName(tagName) {
+    // create new tag
+    const tagId = Tags.insert({
+      name: tagName,
+      boardId: FlowRouter.getParam('boardId')
+    })
+    this.addExistingTag(tagId)
+  },
+  addExistingTag(tagId) {
+    // add tag to note
+    Notes.update({
+      _id: this.props.note._id
+    }, {
+      $push: {
+        tagIds: tagId
+      }
+    })
+  },
+  removeTag(tagId) {
+    // remove tag from note
+    Notes.update({
+      _id: this.props.note._id
+    }, {
+      $pull: {
+        tagIds: tagId
+      }
+    })
+  },
+  renderText: function() {
+    let render
+    if (this.state.text && this.props.markdown) {
+      const markdown = { __html: marked(this.state.text, { sanitize: true }) }
+      render = (<div
+        className="markdown"
+        dangerouslySetInnerHTML={markdown}
+        />
+      )
+    } else {
+      render = (
+        <textarea type="text" name="text" onChange={this.onChange} value={this.state.text}
+          onKeyUp={this.onKeyUp}
+          placeholder="And a description here"></textarea>
+      )
+    }
+    return render
+  },
   render () {
-    // <C.TagLine tags={this.data.tags}/>
     return (
       <div className="note">
-        <input type="text" name="title" value={this.data.note.title}
-          onKeyUp={this.onKeyUp}/>
-        <textarea type="text" name="text" value={this.data.note.text}
-          onKeyUp={this.onKeyUp}></textarea>
+        <input type="text"
+          name="name"
+          onChange={this.onChange}
+          value={this.state.name}
+          onKeyUp={this.onKeyUp}
+          placeholder="Add a title here"/>
+        <C.TagLine
+          tags={this.data.tags}
+          tagNotFoundWithName={this.newTagWithName}
+          handleRemove={this.removeTag}
+          handleSelect={this.addExistingTag}/>
+        {this.renderText()}
       </div>
     )
   }

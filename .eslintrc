@@ -27,7 +27,8 @@
         "Schemas": true,
         "check": true,
         "Security": false,
-        "reactDragula": false
+        "reactDragula": false,
+        "marked": false
     },
     "plugins": [
     ],
