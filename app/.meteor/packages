@@ -29,8 +29,8 @@ meteorhacks:flow-layout
 aldeed:collection2
 matb33:collection-hooks
 dburles:collection-helpers
-aldeed:simple-schema
 ongoworks:security
+aldeed:simple-schema
 
 underscore
 

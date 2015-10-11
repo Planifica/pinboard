@@ -1,0 +1,21 @@
+.note {
+  border-radius: 15px;
+  border: 1px solid $border-color;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  input, input:focus, textarea {
+    border: 0;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  input[name=title] {
+    font-size: 2rem;
+  }
+  textarea {
+    height: 250px;
+  }
+}
