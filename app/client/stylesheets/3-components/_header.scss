@@ -5,4 +5,10 @@ header {
         left: 0;
         right: 0;
     }
+    &.private {
+      background-color: rgba($primary-color,0.8);
+    }
+    .brand-logo > img {
+      height: 35px;
+    }
 }

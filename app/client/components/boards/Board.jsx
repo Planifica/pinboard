@@ -98,13 +98,16 @@ C.Board = React.createClass({
     }
 
     let numberOfColumns = this.data && this.data.mostOuterNote && this.data.mostOuterNote.position.x || -1
-
+    let boardName = (
+      <h5>{this.data.board.name}</h5>
+    )
     return (
       <div>
-        <C.Toolbar left={this.data.board.name} right={memberButton}/>
+        <C.Toolbar
+          left={boardName}
+          right={memberButton}/>
         {this.state.sideBar ? this.state.sideBar : ''}
         <div className="container">
-          <h5>{TAPi18n.__('yourNotes')}</h5>
           <div className="note-columns">
             {this.renderColumns(numberOfColumns)}
           </div>

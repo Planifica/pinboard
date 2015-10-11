@@ -18,10 +18,11 @@ C.Boards = React.createClass({
   },
 
   render() {
+
+    // <C.TagLine tags={this.data.tags}/>
     return (
       <div className="container board-list-container">
-        <h5>{TAPi18n.__('yourBoards')}</h5>
-        <C.TagLine tags={this.data.tags}/>
+        <h6>{TAPi18n.__('yourBoards')}</h6>
         <div className="board-list">
             <C.BoardCreationThumbnail/>
             {this.renderBoards()}
