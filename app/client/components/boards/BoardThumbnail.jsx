@@ -8,6 +8,8 @@ C.BoardThumbnail = React.createClass({
   render() {
     return (
       <div className="board-thumbnail" onClick={this.loadBoard}>
+        <div className="board-preview">
+        </div>
         <div className="title">
           {this.props.board.name}
         </div>
