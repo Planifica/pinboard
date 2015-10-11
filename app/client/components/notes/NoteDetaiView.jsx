@@ -20,7 +20,11 @@ C.NoteDetailView = React.createClass({
       </div>
     )
     const noteContent = (
-      <C.Note note={this.props.note}/>
+      <div>
+        <C.Note note={this.props.note}/>
+        <C.NoteComment noteId={this.props.note._id}/>
+        <C.ShowComment noteId={this.props.note._id}/>
+      </div>
     )
     return (
         <C.SideRight

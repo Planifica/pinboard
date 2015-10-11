@@ -14,7 +14,8 @@ Schemas.Comment = new SimpleSchema({
     type: Date
   },
   modifiedAt: {
-    type: Date
+    type: Date,
+    optional: true
   }
 })
 

@@ -13,3 +13,5 @@ Notes.permit(['insert', 'update', 'remove']).apply()
 Notes.permit(['insert', 'update', 'remove'])
   .ifIsOwnedByCurrentUser()
   .apply()
+
+Comments.permit(['insert', 'update', 'remove']).apply()

@@ -61,7 +61,10 @@ C.Board = React.createClass({
     this.renderSideBar(null)
   },
   addNote (position) {
-    this.renderSideBar(<C.NoteDetailView note={position}/>)
+    this.renderSideBar(<C.NoteDetailView note={ { position } }/>)
+  },
+  showDetailView (note) {
+    this.renderSideBar(<C.NoteDetailView note={note}/>)
   },
   renderColumns(numberOfColumns) {
     let columns = []
@@ -76,7 +79,8 @@ C.Board = React.createClass({
         column={column}
         notes={this.getNotes(column)}
         drake={this.state.drake}
-        addNote={this.addNote}/>
+        addNote={this.addNote}
+        showDetailView={this.showDetailView}/>
     })
   },
   render() {
