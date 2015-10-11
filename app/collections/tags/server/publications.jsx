@@ -1,5 +1,6 @@
-Meteor.publish('tags', function(name) {
-  return Tags.find({ name: '/' + name + '/' })
+Meteor.publish('tags', function(boardId) {
+  check(boardId, String)
+  return Tags.find({ boardId: boardId })
 })
 
 Meteor.methods({

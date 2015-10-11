@@ -1,0 +1,36 @@
+.tagline {
+  display: flex;
+  align-items: center;
+}
+.tag {
+  display: flex;
+  align-items: center;
+
+  border-radius: 8px;
+
+  &:first-child {
+    margin-left: 5px;
+  }
+  &:not(:last-child) {
+    margin-right: 5px
+  }
+
+  background-color: $primary-color;
+  color: white;
+  > * {
+    padding: 0 5px 0 10px;
+  }
+  > i {
+    padding: 0 10px;
+
+    cursor: pointer;
+    font-size: 2rem;
+
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+}
