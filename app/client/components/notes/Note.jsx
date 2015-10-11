@@ -1,6 +1,7 @@
 C.Note = React.createClass({
   PropTypes: {
-    note: React.PropTypes.object
+    note: React.PropTypes.object,
+    markdown: React.PropTypes.bool
   },
   mixins: [ReactMeteorData],
   getMeteorData () {
@@ -85,6 +86,24 @@ C.Note = React.createClass({
       }
     })
   },
+  renderText: function() {
+    let render
+    if (this.state.text && this.props.markdown) {
+      const markdown = { __html: marked(this.state.text, { sanitize: true }) }
+      render = (<div
+        className="markdown"
+        dangerouslySetInnerHTML={markdown}
+        />
+      )
+    } else {
+      render = (
+        <textarea type="text" name="text" onChange={this.onChange} value={this.state.text}
+          onKeyUp={this.onKeyUp}
+          placeholder="And a description here"></textarea>
+      )
+    }
+    return render
+  },
   render () {
     return (
       <div className="note">
@@ -99,9 +118,7 @@ C.Note = React.createClass({
           tagNotFoundWithName={this.newTagWithName}
           handleRemove={this.removeTag}
           handleSelect={this.addExistingTag}/>
-        <textarea type="text" name="text" onChange={this.onChange} value={this.state.text}
-          onKeyUp={this.onKeyUp}
-          placeholder="And a description here"></textarea>
+        {this.renderText()}
       </div>
     )
   }

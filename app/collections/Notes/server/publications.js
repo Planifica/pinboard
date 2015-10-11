@@ -1,5 +1,14 @@
-Meteor.publish('notes', function () {
+Meteor.publish('notes', function (boardId) {
+  check(boardId, String)
+
+  const board = Boards.findOne({
+    _id: boardId,
+    members: this.userId
+  })
+  if (!board) {
+    return []
+  }
   return Notes.find({
-    //ownerId: this.userId
+    boardId: boardId
   })
 })

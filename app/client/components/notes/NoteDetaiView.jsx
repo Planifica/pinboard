@@ -24,15 +24,13 @@ C.NoteDetailView = React.createClass({
     this.props.hideSideBar()
   },
   render() {
-    let buttonClass
+    let buttonClass = this.state.buttonClass
 
     const toolbarButtonsLeft = (
       <div>
-        <button className
-          onClick={this.setMarkdown} >
-          <i className="ion-ios-arrow-left"/>
-          <i className="ion-ios-arrow-right"/>
-          </button>
+        <C.IconButton
+          onClick={this.setMarkdown}
+          icons={['ion-ios-arrow-left', 'ion-ios-arrow-right']}/>
       </div>
     )
     const toolbarButtons = (
@@ -47,12 +45,7 @@ C.NoteDetailView = React.createClass({
           onClick={this.props.hideSideBar} />
       </div>
     )
-    let editor
-    if (this.state.markdown === true) {
-      editor = (<C.MarkdownNote note={this.props.note}/>)
-    } else {
-      editor = (<C.Note note={this.props.note}/>)
-    }
+    let editor = (<C.Note note={this.props.note} markdown={this.state.markdown}/>)
     const noteContent = (
       <div>
         {editor}
