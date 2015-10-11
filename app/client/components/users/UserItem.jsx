@@ -5,8 +5,9 @@ C.UserItem = React.createClass({
   },
   renderAvatar () {
     let url = ''
-    if (this.props.email) {
-      url = Gravatar.imageUrl(this.props.email, {
+    let email = this.props.user.emails[0].address
+    if (email) {
+      url = Gravatar.imageUrl(email, {
         size: 34,
         default: 'mm'
       })

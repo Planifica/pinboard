@@ -35,7 +35,7 @@ C.MemberSearch = React.createClass({
       </ul>
     )
     return (
-      <header className="private">
+      <header>
         <div className="search-form">
             <input
             value={this.state.memberName}
