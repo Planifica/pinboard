@@ -25,6 +25,7 @@
         "Tags": true,
         "Comments": true,
         "Schemas": true,
+        "reactDragula": false,
         "check": true,
         "Security": false
     },
