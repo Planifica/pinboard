@@ -4,8 +4,12 @@ C.UserItem = React.createClass({
     handlePrimaryClick: React.PropTypes.func
   },
   renderAvatar () {
+    let url = Gravatar.imageUrl(this.props.user.emails[0].address, {
+      size: 34,
+      default: 'mm'
+    })
     let render = (
-      <div className="circle"></div>
+      <div className="circle"><img className="circle" src={url}/></div>
     )
     return render
   },
