@@ -1,5 +1,3 @@
-let drake
-
 C.Board = React.createClass({
   mixins: [ReactMeteorData],
 
@@ -19,44 +17,28 @@ C.Board = React.createClass({
     })[0]
   },
 
-  getNotes() {
-    let lastColumn = this.data.mostOuterNote && this.data.mostOuterNote.position.x,
-      notes = [],
+  getNotes(column) {
+    let notes = [],
       realNotes = this.data.notes
 
-    for (let i = 0; i <= lastColumn + 1; i++) {
-      for (let j = 0; j <= 2; j++) {
-        let realNode = this.noteWithPosition(realNotes, i, j)
+    for (let j = 0; j <= 2; j++) {
+      let realNode = this.noteWithPosition(realNotes, column, j)
 
-        if (!realNode) {
-          let virtualNode = {
-            virtual: true,
-            position: {
-              x: i,
-              y: j
-            }
+      if (!realNode) {
+        let virtualNode = {
+          virtual: true,
+          position: {
+            x: column,
+            y: j
           }
-          notes.push(virtualNode)
-        } else {
-          notes.push(realNode)
         }
+        notes.push(virtualNode)
+      } else {
+        notes.push(realNode)
       }
     }
 
     return notes
-  },
-
-  renderNotesForColumn(column) {
-    return this.getNotes().filter((note) => {
-      return note.position.x === column
-    }).map((note) => {
-      console.log(note.position)
-      if (note.virtual) {
-        return <C.NotePlaceholder />
-      }
-
-      return <C.NoteThumbnail key={note._id} note={note} />
-    })
   },
 
   renderColumns(numberOfColumns) {
@@ -67,16 +49,8 @@ C.Board = React.createClass({
     }
 
     return columns.map((column) => {
-      let containerName = 'dragContainer' + column
-      let container = (
-        <div className="note-column" ref={containerName}>
-          {this.renderNotesForColumn(column)}
-        </div>
-      )
 
-      drake.containers.push(container)
-
-      return container
+      return <C.BoardColumn column={column} notes={this.getNotes(column)} drake={this.state.drake} />
     })
   },
 
@@ -98,6 +72,12 @@ C.Board = React.createClass({
   },
 
   componentDidMount() {
-    drake = reactDragula()
+    this.setState({
+      drake: reactDragula({
+        invalid(el) {
+          return el.className === 'note-placeholder'
+        }
+      })
+    })
   }
 })
