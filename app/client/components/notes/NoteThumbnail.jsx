@@ -13,9 +13,12 @@ C.NoteThumbnail = React.createClass({
 
     return (
       <div className="note-thumbnail" data-note={this.props.note._id} style={style}>
-        <div className="title">
+        <p className="title">
           {this.props.note.name}
-        </div>
+        </p>
+        <p className="text">
+          {this.props.note.text}
+        </p>
       </div>
     )
   },
