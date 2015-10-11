@@ -3,3 +3,9 @@ if (Meteor.isServer) {
     return Comments.find({ noteId: noteId })
   })
 }
+
+Meteor.methods({
+  removeComment: (noteId) => {
+    Comments.remove({ noteId: noteId })
+  }
+})

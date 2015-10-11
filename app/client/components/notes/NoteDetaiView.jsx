@@ -3,13 +3,18 @@ C.NoteDetailView = React.createClass({
     note: React.PropTypes.object,
     hideSideBar: React.PropTypes.func
   },
+  removeNote() {
+    Notes.remove({ _id: this.props.note._id })
+    Meteor.call('removeComment', this.props.note._id)
+    this.props.hideSideBar()
+  },
   render() {
     const toolbarButtons = (
       <div>
         <C.IconButton
           icon="ion-ios-trash-outline"
           toolbarLeftClassName="toolbar-right-icon"
-          onClick={this.renderSearchHeader} />
+          onClick={this.removeNote} />
         <C.IconButton
           icon="ion-ios-close-empty"
           className="toolbar-right-icon"
