@@ -5,6 +5,12 @@ C.NoteThumbnail = React.createClass({
       y: this.props.note.position.y
     }
   },
+  PropTypes: {
+    showDetailView: React.PropTypes.func
+  },
+  showDetailView() {
+    this.props.showDetailView(this.props.note)
+  },
   render() {
     let style = {
       WebkitTransform: 'translate(' + this.state.x * 170 + 'px,' + this.state.y * 170 + 'px)',
@@ -12,7 +18,7 @@ C.NoteThumbnail = React.createClass({
     }
 
     return (
-      <div className="note-thumbnail" data-note={this.props.note._id} style={style}>
+      <div className="note-thumbnail" data-note={this.props.note._id} style={style} onClick={this.showDetailView}>
         <p className="title">
           {this.props.note.name}
         </p>

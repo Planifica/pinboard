@@ -1,8 +1,8 @@
 .note {
   border-radius: 15px;
-  border: 1px solid $border-color;
   padding: 10px;
-
+  margin: 10px;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -12,10 +12,28 @@
     margin: 0;
     font-size: 1.5rem;
   }
-  input[name=title] {
+  input[name=name] {
     font-size: 2rem;
   }
   textarea {
     height: 250px;
+  }
+  .markdown {
+    padding: 0 10px;
+  }
+}
+
+.menu-right.note-detail-view {
+
+  background-color: $bg-light;
+  /* Larger than mobile */
+  @media (min-width: 400px) {
+    width: 100%;
+  }
+  @media (min-width: 750px) {
+    width: 500px;
+  }
+  @media (min-width: 1000px) {
+    width: 50%;
   }
 }

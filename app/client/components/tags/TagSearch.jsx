@@ -12,8 +12,9 @@ C.TagSearch = React.createClass({
   /* Fetches tags from the server */
   searchTags(event) {
     let name = $(event.target).val()
+    let boardId = FlowRouter.getParam('boardId')
     const keyCode = event.keyCode
-    Meteor.call('searchTags', name, (err, res) => {
+    Meteor.call('searchTags', name, boardId, (err, res) => {
       // if there is no result and the user pressed enter
       // we want to tell the parent component about this
       if (res.length === 0 && keyCode === 13) {

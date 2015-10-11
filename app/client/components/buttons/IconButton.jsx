@@ -9,12 +9,26 @@ C.IconButton = React.createClass({
       this.props.onClick(this.props.clickContext)
     }
   },
+  renderIcons() {
+    let render
+    if (this.props.icon) {
+      render = (
+        <i className={this.props.icon}></i>
+      )
+    }
+    if (this.props.icons && this.props.icons.length > 0) {
+      render = this.props.icons.map((icon) => {
+        return (<i className={icon}></i>)
+      })
+    }
+    return render
+  },
   render () {
-    const { propClassName, clickContext } = this.props
+    const { propClassName } = this.props
     const className = propClassName || '' + 'button-icon'
     return (
         <button onClick={this.handleClick} className={className}>
-            <i className={this.props.icon}></i>
+          {this.renderIcons()}
         </button>
     )
   }

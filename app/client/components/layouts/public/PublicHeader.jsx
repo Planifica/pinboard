@@ -26,7 +26,9 @@ C.PublicHeader = React.createClass({
         }
 
         logo = (
-            <div>Logo</div>
+            <div className="brand-logo">
+              <img src="/full4.png"></img>
+            </div>
         )
 
         return (

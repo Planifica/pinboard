@@ -44,7 +44,7 @@ C.MainHeader = React.createClass({
     )
     let actions = (
       <div>
-        <C.IconButton icon="ion-ios-search" onClick={this.renderSearchHeader}/>
+        { /* <C.IconButton icon="ion-ios-search" onClick={this.renderSearchHeader}/>*/ }
         {loginButton}
       </div>
     )

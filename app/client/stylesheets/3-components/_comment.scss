@@ -1,0 +1,14 @@
+.comment, .comments {
+  width: 100%;
+  padding: 10px;
+  h6 {
+    margin-bottom: 5px;
+  }
+  &.comment-input {
+    textarea {
+      width: 100%;
+      margin-bottom: 5px;
+      border: 0;
+    }
+  }
+}
