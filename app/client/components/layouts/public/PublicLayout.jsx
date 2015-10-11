@@ -8,7 +8,7 @@ C.PublicLayout = React.createClass({
                   {this.props.content}
               </div>
 
-              {this.props.footer}
+              <C.PublicFooter />
           </div>
       )
     }
