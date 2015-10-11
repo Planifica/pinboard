@@ -1,4 +1,4 @@
-.note-thumbnail {
+.note-placeholder {
   position: relative;
 
   margin: 5px 5px 10px 5px;
@@ -7,13 +7,13 @@
   /* Larger than mobile */
 
   border: 1px solid $primary-color-light;
-  background-color: $primary-color-light;
+  background-color: white;
   border-radius: 4px;
 
   cursor: pointer;
 
   &:hover {
-    background-color: $primary-color;
+    background-color: whitesmoke;
   }
 
   .title {
