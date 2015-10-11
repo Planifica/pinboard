@@ -47,7 +47,7 @@ C.Note = React.createClass({
     // <C.TagLine tags={this.data.tags}/>
     return (
       <div className="note">
-        <input type="text" name="title" onChange={this.onChange} value={this.data.note.name}
+        <input type="text" name="name" onChange={this.onChange} value={this.data.note.name}
           onKeyUp={this.onKeyUp}/>
         <textarea type="text" name="text" onChange={this.onChange} value={this.data.note.text}
           onKeyUp={this.onKeyUp}></textarea>

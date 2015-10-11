@@ -1,6 +1,7 @@
 C.NoteDetailView = React.createClass({
   PropTypes: {
-    note: React.PropTypes.object
+    note: React.PropTypes.object,
+    hideSideBar: React.PropTypes.func
   },
   render() {
     const toolbarButtons = (
@@ -10,13 +11,9 @@ C.NoteDetailView = React.createClass({
           toolbarLeftClassName="toolbar-right-icon"
           onClick={this.renderSearchHeader} />
         <C.IconButton
-          icon="ion-android-create"
-          toolbarLeftClassName="toolbar-right-icon"
-          onClick={this.renderSearchHeader} />
-        <C.IconButton
           icon="ion-ios-close-empty"
           className="toolbar-right-icon"
-          onClick={this.hide} />
+          onClick={this.props.hideSideBar} />
       </div>
     )
     const noteContent = (
