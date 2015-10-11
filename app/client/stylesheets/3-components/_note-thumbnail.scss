@@ -1,9 +1,11 @@
 .note-thumbnail {
-  position: relative;
+  position: absolute;
 
   margin: 5px 5px 10px 5px;
   height: $note-size;
   width: $note-size;
+  display: inline-flex;
+
   /* Larger than mobile */
 
   border: 1px solid $primary-color-light;
