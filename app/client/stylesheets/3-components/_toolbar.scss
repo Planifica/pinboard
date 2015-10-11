@@ -1,3 +1,15 @@
+header.private {
+  .toolbar {
+    color: white;
+    button {
+      color: white;
+      border-color: white;
+      i {
+        color: white;
+      }
+    }
+  }
+}
 .toolbar {
     display: flex;
     align-items: center;
@@ -6,8 +18,12 @@
     padding: 8px;
     height: 54px;
     > * > * {
+      margin: 0;
       display: flex;
       align-items: center;
+      > button {
+        margin-left: 5px;
+      }
     }
     // buttons in the toolbar should have no margin top/bottom
     button {

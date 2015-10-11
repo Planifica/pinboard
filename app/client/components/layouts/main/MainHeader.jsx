@@ -32,10 +32,15 @@ C.MainHeader = React.createClass({
     }
 
     let logo = (
-        <div>Logo</div>
+        <div className="brand-logo">
+          <img src="/full-white.png"></img>
+        </div>
     )
+    let goToBoards = function() {
+      FlowRouter.go('/boards')
+    }
     let hamburger = (
-        <div></div>
+      <C.IconButton icon="ion-ios-book-outline" onClick={goToBoards}/>
     )
     let actions = (
       <div>
