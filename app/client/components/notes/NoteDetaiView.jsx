@@ -1,7 +1,22 @@
 C.NoteDetailView = React.createClass({
+  getInitialState() {
+    return {
+      markdown: false,
+      buttonClass: 'off'
+    }
+  },
   PropTypes: {
     note: React.PropTypes.object,
     hideSideBar: React.PropTypes.func
+  },
+  setMarkdown() {
+    if (this.state.markdown === false) {
+      this.setState({ markdown: true })
+      this.setState({ buttonClass: 'on' })
+    } else {
+      this.setState({ markdown: false })
+      this.setState({ buttonClass: 'off' })
+    }
   },
   removeNote() {
     Notes.remove({ _id: this.props.note._id })
@@ -9,6 +24,17 @@ C.NoteDetailView = React.createClass({
     this.props.hideSideBar()
   },
   render() {
+    let buttonClass
+
+    const toolbarButtonsLeft = (
+      <div>
+        <button className
+          onClick={this.setMarkdown} >
+          <i className="ion-ios-arrow-left"/>
+          <i className="ion-ios-arrow-right"/>
+          </button>
+      </div>
+    )
     const toolbarButtons = (
       <div>
         <C.IconButton
@@ -21,9 +47,15 @@ C.NoteDetailView = React.createClass({
           onClick={this.props.hideSideBar} />
       </div>
     )
+    let editor
+    if (this.state.markdown === true) {
+      editor = (<C.MarkdownNote note={this.props.note}/>)
+    } else {
+      editor = (<C.Note note={this.props.note}/>)
+    }
     const noteContent = (
       <div>
-        <C.Note note={this.props.note}/>
+        {editor}
         <C.NoteComment noteId={this.props.note._id}/>
         <C.ShowComment noteId={this.props.note._id}/>
       </div>
@@ -32,6 +64,7 @@ C.NoteDetailView = React.createClass({
         <C.SideRight
           className='menu-right note-detail-view'
           content={noteContent}
+          toolbarLeft={toolbarButtonsLeft}
           toolbarRight={toolbarButtons}/>
     )
   }
