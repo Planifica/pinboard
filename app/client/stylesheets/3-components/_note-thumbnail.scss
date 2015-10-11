@@ -9,22 +9,22 @@
   /* Larger than mobile */
   background: white;
   border-radius: 15px;
+  overflow: hidden;
 
   cursor: pointer;
 
   padding: 10px;
   flex-direction: column;
 
-  > p {
+  > p, .markdown {
     margin-bottom: 5px;
-    overflow: hidden;
     word-wrap: break-word;
   }
   .title {
     font-size: 1.7rem;
   }
 
-  .text {
+  .text, .markdown {
     font-size: 1.3rem;
     color: $text-secondary;
   }

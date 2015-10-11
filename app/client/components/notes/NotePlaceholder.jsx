@@ -12,9 +12,11 @@ C.NotePlaceholder = React.createClass({
       transform: 'translate(' + this.props.note.position.x * 170 + 'px,' + this.props.note.position.y * 170 + 'px)'
     }
 
+    let animationCss = this.props.notes.length === 0 ? 'animate-flicker' : ''
+
     return (
       <div
-        className="note-placeholder"
+        className={'note-placeholder ' + animationCss}
         style={style}
         onClick={this.addNote}
         >

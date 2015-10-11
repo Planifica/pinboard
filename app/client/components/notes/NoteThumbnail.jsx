@@ -11,6 +11,17 @@ C.NoteThumbnail = React.createClass({
   showDetailView() {
     this.props.showDetailView(this.props.note)
   },
+  renderText () {
+    if(this.props.note.text){
+      const markdown = { __html: marked(this.props.note.text, { sanitize: true }) }
+      return (<div className="markdown">
+        <p
+        dangerouslySetInnerHTML={markdown}
+        />
+        </div>
+      )
+    }
+  },
   render() {
     let style = {
       WebkitTransform: 'translate(' + this.state.x * 170 + 'px,' + this.state.y * 170 + 'px)',
@@ -23,7 +34,7 @@ C.NoteThumbnail = React.createClass({
           {this.props.note.name}
         </p>
         <p className="text">
-          {this.props.note.text}
+          {this.renderText()}
         </p>
       </div>
     )

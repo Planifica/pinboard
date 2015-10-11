@@ -8,20 +8,57 @@
 
   /* Larger than mobile */
 
-  border-radius: 4px;
+  border-radius: 15px;
 
   cursor: pointer;
+  border: 1px solid rgba(0,0,0,0);
+  opacity: 0;
 
   align-items: center;
   justify-content: center;
   color: rgba(0,0,0,0);
-
   font-size: 4rem;
+
+  transition: opacity .5s ease-in-out;
 
   &:hover {
     background-color: whitesmoke;
     color: white;
     border: 1px solid $border-color;
     color: $border-color;
+    opacity: 1;
+  }
+
+  @keyframes flickerAnimation {
+   0%   { opacity:1; }
+   50%  { opacity:0; }
+   100% { opacity:1; }
+  }
+  @-o-keyframes flickerAnimation{
+   0%   { opacity:1; }
+   50%  { opacity:0; }
+   100% { opacity:1; }
+  }
+  @-moz-keyframes flickerAnimation{
+   0%   { opacity:1; }
+   50%  { opacity:0; }
+   100% { opacity:1; }
+  }
+  @-webkit-keyframes flickerAnimation{
+   0%   { opacity:1; }
+   50%  { opacity:0; }
+   100% { opacity:1; }
+  }
+  &.animate-flicker:first-child {
+    background-color: whitesmoke;
+    color: white;
+    border: 1px solid $border-color;
+    color: $border-color;
+    opacity: 1;
+
+    -webkit-animation: flickerAnimation 2s infinite;
+    -moz-animation: flickerAnimation 2s infinite;
+    -o-animation: flickerAnimation 2s infinite;
+     animation: flickerAnimation 2s infinite;
   }
 }
