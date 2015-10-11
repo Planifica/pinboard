@@ -14,12 +14,13 @@
 
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgba(0,0,0,0);
 
   font-size: 4rem;
 
   &:hover {
     background-color: whitesmoke;
+    color: white;
     border: 1px solid $border-color;
     color: $border-color;
   }
