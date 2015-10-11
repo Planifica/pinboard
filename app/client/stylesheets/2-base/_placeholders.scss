@@ -7,3 +7,10 @@
   display: flex;
   align-items: center;
 }
+
+%ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}

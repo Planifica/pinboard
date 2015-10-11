@@ -30,6 +30,7 @@ aldeed:collection2
 matb33:collection-hooks
 dburles:collection-helpers
 ongoworks:security
+aldeed:simple-schema
 
 underscore
 
@@ -46,4 +47,5 @@ tap:i18n
 
 # sanjo:jasmine
 # velocity:html-reporter
-aldeed:simple-schema
+
+mquandalle:bower

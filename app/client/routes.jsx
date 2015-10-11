@@ -34,9 +34,13 @@ FlowRouter.route('/register', {
   }
 })
 
-FlowRouter.route('/boards', {
+FlowRouter.route('/boards/:boardId?', {
   name: 'Boards',
-  action() {
-    renderPrivateLayoutWith(<C.Boards />)
+  action(params) {
+    if (params.boardId) {
+      renderPrivateLayoutWith(<C.Board />)
+    } else {
+      renderPrivateLayoutWith(<C.Boards />)
+    }
   }
 })

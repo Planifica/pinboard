@@ -1,0 +1,8 @@
+{
+  "name": "pinboard",
+  "version": "0.0.1",
+  "dependencies": {
+    "react-dragula": "1.1.2"
+  },
+  "private": true
+}

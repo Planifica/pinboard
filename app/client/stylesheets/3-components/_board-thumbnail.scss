@@ -54,10 +54,7 @@
     border-bottom-right-radius: 14px;
     border-bottom-left-radius: 14px;
 
-    text-overflow: ellipsis;
-  	white-space: nowrap;
-  	overflow: hidden;
-    text-align: center;
+    @extend %ellipsis;
   }
 
   &.bord-creation-thumbnail {
