@@ -14,4 +14,10 @@ Notes.permit(['insert', 'update', 'remove'])
   .ifIsOwnedByCurrentUser()
   .apply()
 
+Tags.permit(['insert', 'update', 'remove']).never().apply()
+
+// permit users to modify boards that they own
+Tags.permit(['insert'])
+  .apply()
+
 Comments.permit(['insert', 'update', 'remove']).apply()

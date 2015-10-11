@@ -4,7 +4,7 @@ C.Tag = React.createClass({
     handleClick: React.PropTypes.func
   },
   handleRemove () {
-    this.props.handleRemove(this.props.tag)
+    this.props.handleRemove(this.props.tag._id)
   },
   render () {
     return (

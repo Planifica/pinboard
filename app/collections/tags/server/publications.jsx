@@ -4,11 +4,11 @@ Meteor.publish('tags', function(boardId) {
 })
 
 Meteor.methods({
-  searchTags: function(name) {
+  searchTags: function(name, boardId) {
     check(name, String)
     if (name.length === 0) {
       return []
     }
-    return Tags.find({ name: new RegExp(name, 'i') }).fetch()
+    return Tags.find({ name: new RegExp(name, 'i'), boardId: boardId }).fetch()
   }
 })

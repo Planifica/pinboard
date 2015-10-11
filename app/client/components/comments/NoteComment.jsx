@@ -20,14 +20,16 @@ C.NoteComment = React.createClass({
       noteId: this.props.noteId,
       createdAt: new Date()
     })
+    this.refs.comment.getDOMNode().value = ''
   },
   handleChange(event) {
     this.setState({ comment: event.target.value })
   },
   render() {
     return (
-      <div>
-        <textarea onChange={this.handleChange} value={this.state.comment}></textarea>
+      <div className="comment comment-input">
+        <h6>New Comment</h6>
+        <textarea ref="comment" onChange={this.handleChange} value={this.state.comment}></textarea>
         <C.CommentSaveButton saveComment={ this.saveComment }/>
       </div>
     )
